@@ -1,0 +1,49 @@
+:host {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  h3 {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",メイリオ,Meiryo,"ＭＳ Ｐゴシック",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    color: rgb(33, 25, 34);
+    font-weight: bold;
+    font-size: 32px;
+    margin: 0 0 10px 0;
+    text-align: center;
+  }
+
+  h4 {
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Fira Sans","Droid Sans","Helvetica Neue",Helvetica,"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",メイリオ,Meiryo,"ＭＳ Ｐゴシック",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    color: rgb(33, 25, 34);
+    font-size: 16px;
+    font-weight: normal;
+    margin-top: 0;
+    text-align: center;
+  }
+}
+
+.logo {
+  width: 42px;
+  height: 42px;
+}
+
+.card {
+  height: 100%;
+}
+
+.center {
+  margin: 0px auto;
+  width: 268px;
+  padding: 20px 0;
+}
+
+.button {
+  width: 100%;
+}

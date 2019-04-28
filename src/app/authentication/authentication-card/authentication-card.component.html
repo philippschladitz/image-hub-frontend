@@ -1,0 +1,15 @@
+<mat-card class="card">
+  <div class="center">
+    <div class="header">
+      <div>
+        <img class="logo" src="assets/icons/logo.png">
+      </div>
+      <h3>Willkommen bei Image-Hub</h3>
+      <h4>Fine neue Ideen zum Ausprobieren</h4>
+    </div>
+    <ng-content></ng-content>
+    <mat-card-actions>
+      <button mat-flat-button color="warn" class="button" (click)="buttonClick.emit()">{{ buttonLabel }}</button>
+    </mat-card-actions>
+  </div>
+</mat-card>
