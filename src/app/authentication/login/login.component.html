@@ -1,12 +1,12 @@
 <app-authentication-card buttonLabel="Anmelden" (buttonClick)="login()">
-  <form class="form-flex">
+  <form class="form-flex" [formGroup]="form">
     <mat-form-field appearance="outline">
       <mat-label>E-Mail</mat-label>
-      <input matInput placeholder="E-Mail">
+      <input matInput placeholder="E-Mail" formControlName="email">
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Passwort</mat-label>
-      <input matInput placeholder="Passwort erstellen">
+      <input matInput placeholder="Passwort" type="password" formControlName="password">
     </mat-form-field>
   </form>
 </app-authentication-card>
