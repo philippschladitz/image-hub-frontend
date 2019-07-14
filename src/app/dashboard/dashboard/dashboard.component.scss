@@ -1,0 +1,36 @@
+.logo {
+  width: 32px;
+  height: 32px;
+}
+
+::ng-deep .search {
+  flex-grow: 1;
+  font-size: 14px;
+
+  .mat-form-field-wrapper {
+    padding-bottom: 0px;
+  }
+
+  .mat-form-field-flex {
+    padding-top: 0px;
+  }
+
+  .mat-form-field-underline {
+    display: none;
+  }
+
+  .mat-icon {
+    vertical-align: bottom;
+    font-size: 14px;
+    width: 14px;
+    height: 14px;
+  }
+}
+
+.white {
+  background: white;
+}
+
+.divider {
+  height: 32px;
+}
