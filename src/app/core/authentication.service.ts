@@ -1,8 +1,7 @@
-import { Injectable } from "@angular/core";
-import { AuthenticationModule } from '../authentication.module';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { APIService } from '@app/core/api.service';
-import { Login, LoginResponse, Register } from '../interfaces';
+import { Login, LoginResponse, Register } from './interfaces';
 import { tap } from 'rxjs/operators';
 
 @Injectable({
@@ -23,7 +22,7 @@ export class AuthenticationService {
     login(login: Login) {
         return this.httpClient
             .post<LoginResponse>(
-                `${this.apiService.apiURL}/auth/login`, 
+                `${this.apiService.apiURL}/auth/login`,
                 login)
             .pipe(
                 tap(loginResponse => {

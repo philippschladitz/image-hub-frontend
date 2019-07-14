@@ -5,11 +5,15 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: '@app/authentication/authentication.module#AuthenticationModule'
+  },
+  {
+    path: 'dashboard',
+    loadChildren: '@app/dashboard/dashboard.module#DashboardModule'
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class CoreRoutingModule { }

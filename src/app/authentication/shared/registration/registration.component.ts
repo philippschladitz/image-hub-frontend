@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AuthenticationService } from '../services/authentication.service';
+import { AuthenticationService } from '@app/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -13,13 +14,14 @@ export class RegistrationComponent implements OnInit {
 
   constructor(
     private readonly formBuilder: FormBuilder,
-    private readonly authenticationService: AuthenticationService
+    private readonly authenticationService: AuthenticationService,
+    private readonly router: Router
   ) {}
 
   ngOnInit() {
     this.form = this.formBuilder.group({
       email: this.formBuilder.control('', [
-        Validators.required, 
+        Validators.required,
         Validators.email
       ]),
       password: this.formBuilder.control('', [Validators.required]),
@@ -36,6 +38,7 @@ export class RegistrationComponent implements OnInit {
       }).subscribe(registerResponse => {
         if (registerResponse) {
           console.log('success');
+          this.router.navigateByUrl('dashboard');
         }
       });
     } else {

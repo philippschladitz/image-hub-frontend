@@ -1,25 +1,23 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
-import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { AuthenticationCardComponent } from './authentication-card/authentication-card.component';
+import { RegistrationComponent } from './registration/registration.component';
+import { LoginComponent } from './login/login.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-import { AuthenticationRoutingModule } from './authentication-routing.module';
-import { AuthenticationComponent } from './authentication/authentication.component';
-import { SharedModule } from './shared/shared.module';
-
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
-    AuthenticationComponent
+    AuthenticationCardComponent,
+    RegistrationComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,
-    AuthenticationRoutingModule,
     MatGridListModule,
     MatCardModule,
     MatButtonModule,
@@ -27,7 +25,10 @@ import { SharedModule } from './shared/shared.module';
     MatSnackBarModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule
+  ],
+  exports: [
+    RegistrationComponent,
+    LoginComponent
   ]
 })
-export class AuthenticationModule { }
+export class SharedModule { }
