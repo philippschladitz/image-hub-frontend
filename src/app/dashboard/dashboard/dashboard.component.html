@@ -1,7 +1,17 @@
+<div class="background-layer">
+  <mat-grid-list [cols]="6" [rowHeight]="100" [gutterSize]="30">
+    <mat-grid-tile *ngFor="let image of images" class="round" [rowspan]="image.rowSpan">
+      <img [src]="image.url" alt="image" class="fullsize-img">
+    </mat-grid-tile>
+  </mat-grid-list>
+  <div class="background"></div>
+</div>
+
 <mat-toolbar class="white">
   <img class="logo" src="assets/icons/logo.png">
-  <mat-form-field class="search" appearance="fill">
+  <mat-form-field class="search" appearance="outline">
     <mat-icon matPrefix>search</mat-icon>
+    <mat-label>Search</mat-label>
     <input type="text" matInput placeholder="Search">
   </mat-form-field>
   <button mat-button>Home</button>
@@ -18,3 +28,10 @@
     <mat-icon>more_horiz</mat-icon>
   </button>
 </mat-toolbar>
+
+<div class="card-wrapper">
+  <mat-card class="card">
+    <mat-card-header>Header</mat-card-header>
+    <mat-card-content>Content</mat-card-content>
+  </mat-card>
+</div>
