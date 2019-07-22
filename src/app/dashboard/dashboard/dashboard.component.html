@@ -31,7 +31,26 @@
 
 <div class="card-wrapper">
   <mat-card class="card">
-    <mat-card-header>Header</mat-card-header>
-    <mat-card-content>Content</mat-card-content>
+    <mat-card-header>
+      <div class="header">
+        <div class="circle-header">
+          <div *ngFor="let circle of [0, 1, 2, 3]" class="circle-parent">
+            <div class="circle grey"></div>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+      </div>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="card-content">
+        <mat-icon class="account">account_circle</mat-icon>
+        <div class="email text">email</div>
+        <h1 class="title">Willkommen bei Image-Hub, Name!</h1>
+        <div class="subtitle">Deine Antworten auf die folgenden Fragen helfen uns dabei, die richtigen Ideen für dich zu finden.</div>
+        <button mat-raised-button class="proceed">Weiter</button>
+        <div class="text">Du hast bereits ein Image-Hub Konto?</div>
+        <a class="link text" routerLink="/login">Stattdessen anmelden</a>
+      </div>
+    </mat-card-content>
   </mat-card>
 </div>
