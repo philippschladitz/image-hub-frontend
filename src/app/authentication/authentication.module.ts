@@ -8,9 +8,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { SharedModule } from '@app/shared';
 import { AuthenticationRoutingModule } from './authentication-routing.module';
 import { AuthenticationComponent } from './authentication/authentication.component';
-import { SharedModule } from './shared/shared.module';
+import { SharedModule as AuthenticationSharedModule } from './shared/shared.module';
 
 
 @NgModule({
@@ -27,6 +28,7 @@ import { SharedModule } from './shared/shared.module';
     MatSnackBarModule,
     FormsModule,
     ReactiveFormsModule,
+    AuthenticationSharedModule,
     SharedModule
   ]
 })

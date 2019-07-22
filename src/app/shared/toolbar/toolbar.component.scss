@@ -1,0 +1,26 @@
+.logo {
+  width: 32px;
+  height: 32px;
+  margin-right: 12px;
+}
+
+::ng-deep .search {
+  flex-grow: 1;
+  font-size: 16px;
+  align-self: flex-start;
+
+  .mat-icon {
+    vertical-align: bottom;
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.white {
+  background: white;
+}
+
+.divider {
+  height: 32px;
+}

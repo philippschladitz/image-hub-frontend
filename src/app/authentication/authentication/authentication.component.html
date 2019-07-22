@@ -1,11 +1,4 @@
-<div class="background-layer">
-  <mat-grid-list [cols]="6" [rowHeight]="100" [gutterSize]="30">
-    <mat-grid-tile *ngFor="let image of images" class="round" [rowspan]="image.rowSpan">
-      <img [src]="image.url" alt="image" class="fullsize-img">
-    </mat-grid-tile>
-  </mat-grid-list>
-  <div class="background"></div>
-</div>
+<app-background-images></app-background-images>
 
 <div class="authentication-card">
   <div class="card">
