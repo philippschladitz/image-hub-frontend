@@ -7,10 +7,13 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DashboardComponent implements OnInit {
-
+  step = 0;
   constructor() { }
 
   ngOnInit() {
   }
 
+  next() {
+    this.step++;
+  }
 }

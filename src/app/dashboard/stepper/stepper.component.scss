@@ -1,0 +1,25 @@
+.circle-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-bottom: 16px;
+
+  .circle-parent {
+    margin: 8px;
+    width: 30px;
+
+    .circle {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+    }
+
+    .grey {
+      background-color: grey;
+    }
+
+    .red {
+      background-color: #e60023;
+    }
+  }
+}

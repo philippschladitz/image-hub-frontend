@@ -1,0 +1,5 @@
+<div class="circle-header">
+  <div *ngFor="let circle of [0, 1, 2, 3]" class="circle-parent">
+    <div class="circle grey" [ngClass]="isCircleActive(circle)"></div>
+  </div>
+</div>
