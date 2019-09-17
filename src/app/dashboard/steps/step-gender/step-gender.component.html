@@ -1,20 +1,27 @@
 <h1 class="title">Mit welchem Geschlecht identifizierst du dich?</h1>
 <mat-divider></mat-divider>
-<mat-radio-group>
-  <mat-radio-button>
-    <h1>Weiblich</h1>
-  </mat-radio-button>
-  <mat-divider></mat-divider>
-  <mat-radio-button>
-    <h1>
-      Männlich
-    </h1>
-  </mat-radio-button>
-  <mat-divider></mat-divider>
-  <mat-radio-button>
-    <h1>
-      Benutzerdefiniert
-    </h1>
-  </mat-radio-button>
-  <mat-divider></mat-divider>
-</mat-radio-group>
+<ng-container [formGroup]="form">
+  <mat-radio-group formControlName="gender">
+    <mat-radio-button value="female">
+      <h1>Weiblich</h1>
+    </mat-radio-button>
+    <mat-divider></mat-divider>
+    <mat-radio-button value="male">
+      <h1>
+        Männlich
+      </h1>
+    </mat-radio-button>
+    <mat-divider></mat-divider>
+    <mat-radio-button class="user-defined-radio-button" value="userDefined">
+      <h1 *ngIf="!isGenderUserDefined(); else userDefinedGenderBlock">
+        Benutzerdefiniert
+      </h1>
+      <ng-template #userDefinedGenderBlock>
+        <input formControlName="userDefinedGender" class="user-defined-input" placeholder="Geschlechtsbezeichnung eingeben">
+      </ng-template>
+    </mat-radio-button>
+    <mat-divider class="divider"></mat-divider>
+  </mat-radio-group>
+</ng-container>
+<button mat-raised-button [disabled]="!isNextEnabled" class="proceed" (click)="onNext()">Weiter</button>
+

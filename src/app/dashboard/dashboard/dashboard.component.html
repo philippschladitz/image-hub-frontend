@@ -12,7 +12,8 @@
     </mat-card-header>
     <mat-card-content [ngSwitch]="step">
        <app-step-welcome *ngSwitchCase="0" (next)="next()"></app-step-welcome>
-       <app-step-gender *ngSwitchCase="1"></app-step-gender>
+       <app-step-gender *ngSwitchCase="1" (next)="next()"></app-step-gender>
+       <h1 *ngSwitchCase="2"></h1>
     </mat-card-content>
   </mat-card>
 </div>

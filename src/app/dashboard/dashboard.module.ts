@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatCardModule } from '@angular/material/card';
 import { MatRadioModule } from '@angular/material/radio';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -23,11 +24,13 @@ import { StepWelcomeComponent, StepGenderComponent } from './steps';
   imports: [
     CommonModule,
     DashboardRoutingModule,
+    FormsModule,
     MatCardModule,
     MatDividerModule,
     MatIconModule,
     MatButtonModule,
     MatRadioModule,
+    ReactiveFormsModule,
     SharedModule
   ]
 })
