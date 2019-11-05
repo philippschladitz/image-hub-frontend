@@ -2,18 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { APIService } from '@app/core/api.service';
 import { Login, LoginResponse, Register } from './interfaces';
-import { tap } from 'rxjs/operators';
+import { tap, switchMap } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root',
 })
 export class AuthenticationService {
-    get accessToken() {
-        return this._accessToken;
-    }
-
-    private _accessToken: string;
-
     constructor(
         private readonly httpClient: HttpClient,
         private readonly apiService: APIService
@@ -26,7 +20,7 @@ export class AuthenticationService {
                 login)
             .pipe(
                 tap(loginResponse => {
-                    this._accessToken = loginResponse.access_token;
+                    this.apiService.accessToken = loginResponse.access_token;
                 })
             );
     }
@@ -34,6 +28,12 @@ export class AuthenticationService {
     register(register: Register) {
         return this.httpClient.post<Register>(
             `${this.apiService.apiURL}/auth/register`,
-            register);
+            register)
+            .pipe(
+              switchMap(() => this.login({
+                email: register.email,
+                password: register.password,
+              })),
+            );
     }
 }

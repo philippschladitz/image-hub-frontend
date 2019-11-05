@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ValidatorFn } from '@angular/forms';
+import { StepsService } from '../steps.service';
 
 @Component({
   selector: 'app-step-gender',
@@ -15,7 +16,10 @@ export class StepGenderComponent {
     return this.form.valid;
   }
 
-  constructor(private readonly formBuilder: FormBuilder) {
+  constructor(
+    private readonly formBuilder: FormBuilder,
+    private readonly stepsService: StepsService
+    ) {
     this.form = formBuilder.group({
       gender: formBuilder.control('', [Validators.required]),
       userDefinedGender: formBuilder.control('')
@@ -30,8 +34,12 @@ export class StepGenderComponent {
 
   onNext() {
     if (this.form.valid) {
-      // save to backend
-      this.next.emit();
+      this.stepsService.postGender({
+        gender: this.form.value.gender,
+        userDefinedGender: this.form.value.userDefinedGender,
+      }).subscribe(() => {
+        this.next.emit();
+      });
     }
   }
 

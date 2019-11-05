@@ -1,2 +1,3 @@
-export { AuthenticationService } from './authentication.service';
+export * from './authentication.service';
+export * from './api.service';
 export * from './interfaces';

@@ -12,7 +12,13 @@ import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SharedModule } from '@app/shared/shared.module';
 import { StepperComponent } from './stepper/stepper.component';
-import { StepWelcomeComponent, StepGenderComponent } from './steps';
+import {
+  StepWelcomeComponent,
+  StepGenderComponent,
+  StepsService,
+  StepLanguageCountryComponent
+} from './steps';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,9 +26,11 @@ import { StepWelcomeComponent, StepGenderComponent } from './steps';
     StepperComponent,
     StepWelcomeComponent,
     StepGenderComponent,
+    StepLanguageCountryComponent,
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
     DashboardRoutingModule,
     FormsModule,
     MatCardModule,
@@ -32,6 +40,9 @@ import { StepWelcomeComponent, StepGenderComponent } from './steps';
     MatRadioModule,
     ReactiveFormsModule,
     SharedModule
+  ],
+  providers: [
+    StepsService
   ]
 })
 export class DashboardModule { }
