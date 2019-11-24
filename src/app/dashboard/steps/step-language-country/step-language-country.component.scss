@@ -1,0 +1,17 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+  padding: 0 32px;
+}
+
+.title {
+  text-align: center;
+  padding: 32px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}

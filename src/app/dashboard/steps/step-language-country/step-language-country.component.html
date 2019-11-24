@@ -1,3 +1,24 @@
 <h1 class="title">Wähle Sprache und Land/Region aus</h1>
+<form [formGroup]="form">
+  <mat-form-field>
+    <mat-label>Sprache</mat-label>
+    <mat-select name="language" formControlName="language">
+      <mat-option *ngFor="let language of languages" [value]="language.value">
+        <!-- needs to be translated -->
+        {{ language.key }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+      <mat-label>Land</mat-label>
+      <mat-select name="country" formControlName="country">
+        <mat-option *ngFor="let country of countries" [value]="country.value">
+          <!-- needs to be translated -->
+          {{ country.key }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+</form>
 <button mat-raised-button [disabled]="!isNextEnabled" class="proceed" (click)="onNext()">Weiter</button>
 
