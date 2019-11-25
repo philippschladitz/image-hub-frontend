@@ -1,0 +1,10 @@
+<h5 class="title">Letzter Schritt! Sag uns, was dich interessiert.</h5>
+
+<div class="topics">
+  <app-topic-card *ngFor="let topic of topics"
+    [topicName]="topic.name"
+    [imageUrl]="topic.imageUrl">
+  </app-topic-card>
+</div>
+
+<button mat-raised-button [disabled]="!isNextEnabled" class="proceed" (click)="onNext()">Weiter</button>

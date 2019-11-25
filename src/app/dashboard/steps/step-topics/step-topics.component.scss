@@ -1,0 +1,14 @@
+:host {
+  padding: 0 32px;
+}
+
+.title {
+  font-size: 24px;
+}
+
+.topics {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  row-gap: 8px;
+  column-gap: 8px;
+}

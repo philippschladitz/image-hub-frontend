@@ -17,7 +17,9 @@ import {
   StepWelcomeComponent,
   StepGenderComponent,
   StepsService,
-  StepLanguageCountryComponent
+  StepLanguageCountryComponent,
+  StepTopicsComponent,
+  TopicCardComponent,
 } from './steps';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -28,6 +30,8 @@ import { HttpClientModule } from '@angular/common/http';
     StepWelcomeComponent,
     StepGenderComponent,
     StepLanguageCountryComponent,
+    StepTopicsComponent,
+    TopicCardComponent,
   ],
   imports: [
     CommonModule,
