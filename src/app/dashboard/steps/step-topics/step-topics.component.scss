@@ -1,5 +1,6 @@
 :host {
-  padding: 0 32px;
+  display: block;
+  padding: 0 18px;
 }
 
 .title {
@@ -11,4 +12,18 @@
   grid-template-columns: auto auto auto auto auto;
   row-gap: 8px;
   column-gap: 8px;
+  overflow: scroll;
+  max-height: 387px;
+}
+
+.gradient {
+  position: relative;
+  margin-top: -40px;
+  height: 40px;
+  z-index: 5;
+  background: linear-gradient(rgba(255,255,255,0), rgb(255,255,255));
+}
+
+.proceed {
+  margin-top: 16px;
 }

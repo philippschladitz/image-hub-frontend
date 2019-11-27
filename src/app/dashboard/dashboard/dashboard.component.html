@@ -3,7 +3,7 @@
 <app-toolbar></app-toolbar>
 
 <div class="card-wrapper">
-  <mat-card class="card">
+  <mat-card class="card" [ngClass]="{'extended-width': step === 3 }">
     <mat-card-header>
       <div class="header">
         <app-stepper [step]="step"></app-stepper>
