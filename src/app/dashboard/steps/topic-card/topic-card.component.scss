@@ -5,6 +5,11 @@
   flex-direction: column;
   justify-content: flex-start;
   cursor: pointer;
+
+  &.checked .overlay .background {
+    opacity: 0.75;
+    z-index: 1;
+  }
 }
 
 :host:hover .overlay .background {
@@ -42,7 +47,6 @@
     margin: 4px;
   }
 }
-
 
 .check-icon-wrapper {
   display: flex;
