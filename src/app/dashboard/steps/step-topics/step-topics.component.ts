@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Output, EventEmitter, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { StepsService } from '../steps.service';
 import { minimumTopicsToSelectValidator } from '../minimum-topics-to-select.validator';
@@ -10,12 +10,12 @@ import { minimumTopicsToSelectValidator } from '../minimum-topics-to-select.vali
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StepTopicsComponent implements OnInit {
+  @Input() topics: {
+    name: string;
+    imageUrl: string;
+  }[];
   @Output() next = new EventEmitter();
   form: FormGroup;
-  topics = new Array(20).fill(0).map((_, index) => ({
-    name: 'Architektur',
-    imageUrl: `assets/login/small/splash (${(index % 9) + 1}).jpg`
-  }));
 
   get isNextEnabled() {
     return this.form.valid;
@@ -49,14 +49,24 @@ export class StepTopicsComponent implements OnInit {
   }
 
   onNext() {
-    // if (this.form.valid) {
-    //   this.stepsService.postGender({
-    //     gender: this.form.value.gender,
-    //     userDefinedGender: this.form.value.userDefinedGender,
-    //   }).subscribe(() => {
-    //     this.next.emit();
-    //   });
-    // }
+    if (this.form.valid) {
+      const selectedTopics = (this.form.value.topics as boolean[])
+        .map((selected, i) => ({
+          name: this.topics[i].name,
+          selected
+        }))
+        .filter(topic => topic.selected)
+        .map(topic => topic.name);
+
+      this.stepsService.postTopics({
+        topics: selectedTopics,
+      }).subscribe(() => {
+        this.next.emit();
+      });
+    }
   }
 
+  trackByTopicName(index, topic) {
+    return topic.name;
+  }
 }

@@ -15,6 +15,13 @@ export class StepsService {
     private readonly apiService: APIService
   ) { }
 
+  getAvailableTopics() {
+    return this.httpClient.get<{
+      id: string;
+      imageUrl: string;
+    }[]>(`${this.apiService.apiURL}/user-facts/available-topics`);
+  }
+
   getGender() {
     return this.httpClient.get(`${this.apiService.apiURL}/user-facts/gender`, {
       headers: this.headers
