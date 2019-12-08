@@ -4,9 +4,10 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { CoreRoutingModule } from './core-routing.module';
 import { RouterModule } from '@angular/router';
+import { PlaceholderComponent } from './placeholder/placeholder.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [PlaceholderComponent],
   imports: [
     CommonModule,
     CoreRoutingModule,

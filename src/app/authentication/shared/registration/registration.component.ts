@@ -38,7 +38,7 @@ export class RegistrationComponent implements OnInit {
       }).subscribe(registerResponse => {
         if (registerResponse) {
           console.log('success');
-          this.router.navigateByUrl('dashboard');
+          this.router.navigateByUrl('registration-dashboard');
         }
       });
     } else {

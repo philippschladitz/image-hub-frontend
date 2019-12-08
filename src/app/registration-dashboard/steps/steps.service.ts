@@ -4,12 +4,6 @@ import { APIService } from '@app/core';
 
 @Injectable()
 export class StepsService {
-  private get headers() {
-    return {
-      authorization: `Bearer ${this.apiService.accessToken}`,
-    };
-  }
-
   constructor(
     private readonly httpClient: HttpClient,
     private readonly apiService: APIService
@@ -24,19 +18,19 @@ export class StepsService {
 
   getGender() {
     return this.httpClient.get(`${this.apiService.apiURL}/user-facts/gender`, {
-      headers: this.headers
+      headers: this.apiService.headers
     });
   }
 
   getCountryAndLanguage() {
     return this.httpClient.get(`${this.apiService.apiURL}/user-facts/country`, {
-      headers: this.headers
+      headers: this.apiService.headers
     });
   }
 
   getTopics() {
     return this.httpClient.get(`${this.apiService.apiURL}/user-facts/topics`, {
-      headers: this.headers
+      headers: this.apiService.headers
     });
   }
 
@@ -44,7 +38,7 @@ export class StepsService {
     return this.httpClient.post(`${this.apiService.apiURL}/user-facts/gender`,
       body,
      {
-      headers: this.headers,
+      headers: this.apiService.headers,
     });
   }
 
@@ -52,7 +46,7 @@ export class StepsService {
     return this.httpClient.post(`${this.apiService.apiURL}/user-facts/country`,
     body,
     {
-      headers: this.headers
+      headers: this.apiService.headers
     });
   }
 
@@ -60,7 +54,7 @@ export class StepsService {
     return this.httpClient.post(`${this.apiService.apiURL}/user-facts/topics`,
     body,
     {
-      headers: this.headers
+      headers: this.apiService.headers
     });
   }
 

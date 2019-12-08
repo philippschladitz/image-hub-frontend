@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthenticationService } from '@app/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private readonly formBuilder: FormBuilder,
     private readonly authenticationService: AuthenticationService,
-    private readonly matSnackBar: MatSnackBar
+    private readonly matSnackBar: MatSnackBar,
+    private readonly router: Router,
   ) { }
 
   ngOnInit() {
@@ -37,6 +39,7 @@ export class LoginComponent implements OnInit {
         if (loginResponse.status === 401) {
           this.matSnackBar.open('E-Mail oder Passwort falsch.', null);
         }
+        this.router.navigateByUrl('');
       }, err => {
         this.matSnackBar.open('Der Server ist nicht erreichbar.', null, { duration: 2000 });
       });

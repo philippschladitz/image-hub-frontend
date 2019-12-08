@@ -1,20 +1,3 @@
-<app-background-images top="78px"></app-background-images>
-
-<app-toolbar></app-toolbar>
-
-<div class="card-wrapper">
-  <mat-card class="card" [ngClass]="{'extended-width': step === 3 }">
-    <mat-card-header>
-      <div class="header">
-        <app-stepper [step]="step"></app-stepper>
-        <mat-divider></mat-divider>
-      </div>
-    </mat-card-header>
-    <mat-card-content [ngSwitch]="step">
-       <app-step-welcome *ngSwitchCase="0" (next)="next()"></app-step-welcome>
-       <app-step-gender *ngSwitchCase="1" (next)="next()"></app-step-gender>
-       <app-step-language-country *ngSwitchCase="2" (next)="next()"></app-step-language-country>
-       <app-step-topics [topics]="topics" *ngSwitchCase="3" (next)="next()"></app-step-topics>
-    </mat-card-content>
-  </mat-card>
-</div>
+<p>
+  dashboard works!
+</p>

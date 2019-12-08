@@ -1,0 +1,36 @@
+.card-wrapper {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 30px;
+  display: flex;
+  justify-content: center;
+
+  .card {
+    width: 544px;
+    height: 640px;
+    display: flex;
+    flex-direction: column;
+
+    mat-divider {
+      position: relative;
+    }
+
+    mat-card-content {
+      flex: 1;
+    }
+  }
+
+  .extended-width {
+    width: 800px;
+  }
+}
+
+.header {
+  width: 100%;
+}
+
+
+
+
+
