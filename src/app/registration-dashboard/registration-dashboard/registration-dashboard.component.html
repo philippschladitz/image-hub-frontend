@@ -3,7 +3,7 @@
 <app-toolbar></app-toolbar>
 
 <div class="card-wrapper">
-  <mat-card class="card" [ngClass]="{'extended-width': step === 3 }">
+  <mat-card class="card" [ngClass]="{'extended-width': step === 3 || step === 4, 'overflow-hidden': step === 4 }">
     <mat-card-header>
       <div class="header">
         <app-stepper [step]="step"></app-stepper>
@@ -15,6 +15,7 @@
        <app-step-gender *ngSwitchCase="1" (next)="next()"></app-step-gender>
        <app-step-language-country *ngSwitchCase="2" (next)="next()"></app-step-language-country>
        <app-step-topics [topics]="topics" *ngSwitchCase="3" (next)="next()"></app-step-topics>
+       <app-step-final *ngSwitchCase="4"></app-step-final>
     </mat-card-content>
   </mat-card>
 </div>

@@ -12,6 +12,10 @@
     display: flex;
     flex-direction: column;
 
+    mat-card-header {
+      min-height: 55px;
+    }
+
     mat-divider {
       position: relative;
     }
@@ -30,7 +34,9 @@
   width: 100%;
 }
 
-
+.overflow-hidden {
+  overflow: hidden;
+}
 
 
 

@@ -1,0 +1,62 @@
+:host {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.grid {
+  display: grid;
+  grid-auto-flow: column;
+  column-gap: 12px;
+}
+
+.rectangle {
+  width: 80px;
+  height: 130px;
+  background: red;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.move-1 {
+  animation: move1 10s infinite linear;
+}
+
+.move-2 {
+  animation: move2 10s infinite linear;
+}
+
+.move-3 {
+  animation: move3 10s infinite linear;
+}
+
+@keyframes move1 {
+  from { transform: translateY(-20px)}
+  to { transform: translateY(-750px) }
+}
+
+@keyframes move2 {
+  from { transform: translateY(-50px)}
+  to { transform: translateY(-550px) }
+}
+
+@keyframes move3 {
+  from { transform: translateY(-40px)}
+  to { transform: translateY(-600px) }
+}
+
+.rectangle-container {
+  height: 100%;
+}
+
+.text {
+  margin-top: 140px;
+  margin-left: 24px;
+
+  h2 {
+    width: 200px;
+    font-weight: 400;
+  }
+}

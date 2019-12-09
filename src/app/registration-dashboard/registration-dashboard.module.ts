@@ -18,6 +18,7 @@ import {
   StepLanguageCountryComponent,
   StepTopicsComponent,
   TopicCardComponent,
+  StepFinalComponent,
 } from './steps';
 import { HttpClientModule } from '@angular/common/http';
 import { RegistrationDashboardComponent } from './registration-dashboard/registration-dashboard.component';
@@ -32,6 +33,7 @@ import { RegistrationDashboardRoutingModule } from './registration-dashboard-rou
     StepLanguageCountryComponent,
     StepTopicsComponent,
     TopicCardComponent,
+    StepFinalComponent,
   ],
   imports: [
     CommonModule,
