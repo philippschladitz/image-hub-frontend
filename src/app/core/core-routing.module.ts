@@ -7,17 +7,17 @@ import { RedirectGuard } from './guards/redirect.guard';
 const routes: Routes = [
   {
     path: 'registration-dashboard',
-    loadChildren: '@app/registration-dashboard/registration-dashboard.module#RegistrationDashboardModule',
+    loadChildren: () => import('@app/registration-dashboard').then(m => m.RegistrationDashboardModule),
     canLoad: [RegistrationGuard],
   },
   {
     path: 'dashboard',
-    loadChildren: '@app/dashboard/dashboard.module#DashboardModule',
+    loadChildren: () => import('@app/dashboard').then(m => m.DashboardModule),
     canLoad: [AuthGuard]
   },
   {
     path: 'auth',
-    loadChildren: '@app/authentication/authentication.module#AuthenticationModule',
+    loadChildren: () => import('@app/authentication').then(m => m.AuthenticationModule),
   },
   {
     path: '',
