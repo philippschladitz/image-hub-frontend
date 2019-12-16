@@ -7,6 +7,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatCardModule } from '@angular/material/card';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { SharedModule } from '@app/shared/shared.module';
@@ -45,6 +46,7 @@ import { RegistrationDashboardRoutingModule } from './registration-dashboard-rou
     MatIconModule,
     MatButtonModule,
     MatRadioModule,
+    MatProgressBarModule,
     MatSelectModule,
     ReactiveFormsModule,
     SharedModule
