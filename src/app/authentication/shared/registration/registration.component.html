@@ -1,17 +1,18 @@
 <app-authentication-card buttonLabel="Weiter" (buttonClick)="register()">
   <form [formGroup]="form" class="form-flex" (submit)="register()">
-    <mat-form-field appearance="outline">
+    <mat-form-field id="email" appearance="outline">
       <mat-label>E-Mail</mat-label>
       <input matInput formControlName="email"  placeholder="E-Mail">
       <mat-error *ngIf="form.controls.email.invalid && form.controls.email.dirty">Hmm...that doesn't look like an email address</mat-error>
     </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>Passwort</mat-label>
+    <mat-form-field id="password" appearance="outline">
+      <mat-label>Passwort eingeben</mat-label>
       <input matInput formControlName="password" placeholder="Passwort erstellen" type="password">
     </mat-form-field>
-    <mat-form-field appearance="outline">
-      <mat-label>Name</mat-label>
-      <input matInput formControlName="name"  placeholder="Name">
+    <mat-form-field id="age" appearance="outline">
+      <mat-label>Alter</mat-label>
+      <input matInput formControlName="age" placeholder="Alter eingeben" type="number">
+      <mat-error *ngIf="form.controls.age.invalid && form.controls.age.dirty">Bitte mindestens zwei Zahlen eingeben.</mat-error>
     </mat-form-field>
   </form>
 </app-authentication-card>

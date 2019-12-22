@@ -1,8 +1,15 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
 .form-flex {
   display: flex;
   flex-direction: column;
 }
 
-.mat-form-field {
-  margin-bottom: 16px;
+::ng-deep  #email .mat-form-field-wrapper,
+::ng-deep  #password .mat-form-field-wrapper,
+::ng-deep  #age .mat-form-field-wrapper  {
+  margin: 0;
 }

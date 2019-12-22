@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { APIService } from '@app/core';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class StepsService {
@@ -19,6 +20,13 @@ export class StepsService {
   getGender() {
     return this.httpClient.get(`${this.apiService.apiURL}/user-facts/gender`, {
       headers: this.apiService.headers
+    });
+  }
+
+  getName() {
+    return this.httpClient.get(`${this.apiService.apiURL}/user-facts/name`, {
+      headers: this.apiService.headers,
+      responseType: 'text'
     });
   }
 
@@ -57,6 +65,4 @@ export class StepsService {
       headers: this.apiService.headers
     });
   }
-
-
 }

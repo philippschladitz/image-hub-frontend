@@ -25,7 +25,7 @@ export class RegistrationComponent implements OnInit {
         Validators.email
       ]),
       password: this.formBuilder.control('', [Validators.required]),
-      name: this.formBuilder.control('', [Validators.required])
+      age: this.formBuilder.control('', [Validators.required, Validators.min(10)]),
     });
   }
 
@@ -34,7 +34,7 @@ export class RegistrationComponent implements OnInit {
       this.authenticationService.register({
         email: this.form.value.email,
         password: this.form.value.password,
-        name: this.form.value.name
+        age: this.form.value.age,
       }).subscribe(registerResponse => {
         if (registerResponse) {
           console.log('success');
