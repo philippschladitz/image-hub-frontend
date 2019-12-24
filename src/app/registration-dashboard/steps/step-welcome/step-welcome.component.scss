@@ -21,6 +21,7 @@
 
   .title {
     font-size: 36px;
+    margin-top: 0px;
   }
 
   .subtitle {
@@ -29,13 +30,20 @@
   }
 
   .text {
+    font-size: 21px;
+    margin-bottom: 0px;
+  }
+
+  .text {
     font-size: 18px;
   }
 
   .link {
+    font-size: 18px;
     text-decoration: none;
     color: black;
     font-weight: bold;
+    cursor: pointer;
   }
 
   .link:hover {

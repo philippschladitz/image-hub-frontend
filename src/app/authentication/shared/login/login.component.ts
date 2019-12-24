@@ -13,6 +13,10 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   form: FormGroup;
 
+  get showEmailError() {
+    return this.form.controls.email.invalid && this.form.controls.email.dirty;
+  }
+
   constructor(
     private readonly formBuilder: FormBuilder,
     private readonly authenticationService: AuthenticationService,

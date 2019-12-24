@@ -12,6 +12,18 @@ import { Router } from '@angular/router';
 export class RegistrationComponent implements OnInit {
   form: FormGroup;
 
+  get showAgeError() {
+   return this.form.controls.age.invalid && this.form.controls.age.dirty;
+  }
+
+  get showPasswordError() {
+    return this.form.controls.password.invalid && this.form.controls.password.dirty;
+  }
+
+  get showEmailError() {
+    return this.form.controls.email.invalid && this.form.controls.email.dirty;
+  }
+
   constructor(
     private readonly formBuilder: FormBuilder,
     private readonly authenticationService: AuthenticationService,
@@ -24,7 +36,7 @@ export class RegistrationComponent implements OnInit {
         Validators.required,
         Validators.email
       ]),
-      password: this.formBuilder.control('', [Validators.required]),
+      password: this.formBuilder.control('', [Validators.required, Validators.minLength(6)]),
       age: this.formBuilder.control('', [Validators.required, Validators.min(10)]),
     });
   }

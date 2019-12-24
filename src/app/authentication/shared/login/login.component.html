@@ -1,8 +1,9 @@
 <app-authentication-card buttonLabel="Anmelden" (buttonClick)="login()">
   <form class="form-flex" [formGroup]="form">
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="outline" [ngClass]="{'error-margin': showEmailError }">
       <mat-label>E-Mail</mat-label>
       <input matInput placeholder="E-Mail" formControlName="email">
+      <mat-error *ngIf="showEmailError">Hmm...that doesn't look like an email address</mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Passwort</mat-label>

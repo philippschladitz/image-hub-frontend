@@ -23,6 +23,13 @@ export class StepsService {
     });
   }
 
+  getEmail() {
+    return this.httpClient.get(`${this.apiService.apiURL}/user-facts/email`, {
+      headers: this.apiService.headers,
+      responseType: 'text'
+    });
+  }
+
   getName() {
     return this.httpClient.get(`${this.apiService.apiURL}/user-facts/name`, {
       headers: this.apiService.headers,

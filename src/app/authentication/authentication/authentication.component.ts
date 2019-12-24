@@ -1,4 +1,5 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-authentication',
@@ -6,7 +7,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['./authentication.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AuthenticationComponent implements OnInit {
+export class AuthenticationComponent {
   registration = true;
 
   smallImages = new Array(9).fill(0).map((_, index) => ({
@@ -32,9 +33,12 @@ export class AuthenticationComponent implements OnInit {
     ];
   }
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(
+    private readonly activatedRoute: ActivatedRoute,
+    private readonly changeDetectorRef: ChangeDetectorRef,
+  ) {
+    const showLogin = this.activatedRoute.snapshot.queryParams.login === 'true';
+    this.registration = !showLogin;
+    this.changeDetectorRef.markForCheck();
   }
-
 }

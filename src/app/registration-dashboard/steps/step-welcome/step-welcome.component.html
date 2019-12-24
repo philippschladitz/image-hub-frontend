@@ -1,4 +1,9 @@
 <mat-icon class="account">account_circle</mat-icon>
+<div class="text">{{ email }}</div>
 <h1 class="title">Willkommen bei Image-Hub, {{ name }}!</h1>
 <div class="subtitle">Deine Antworten auf die folgenden Fragen helfen uns dabei, die richtigen Ideen für dich zu finden.</div>
 <button mat-raised-button class="proceed" (click)="onNext()">Weiter</button>
+<div>
+  <div class="text">Du hast bereits ein Image-Hub Konto?</div>
+  <a class="link" (click)="useLogin()">Stattdessen anmelden</a>
+</div>
