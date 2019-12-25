@@ -24,6 +24,7 @@ import {
 import { HttpClientModule } from '@angular/common/http';
 import { RegistrationDashboardComponent } from './registration-dashboard/registration-dashboard.component';
 import { RegistrationDashboardRoutingModule } from './registration-dashboard-routing.module';
+import { AnimatedBubbleComponent } from './animated-bubble/animated-bubble.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { RegistrationDashboardRoutingModule } from './registration-dashboard-rou
     StepTopicsComponent,
     TopicCardComponent,
     StepFinalComponent,
+    AnimatedBubbleComponent,
   ],
   imports: [
     CommonModule,

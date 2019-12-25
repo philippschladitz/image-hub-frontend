@@ -12,6 +12,38 @@ import { Router } from '@angular/router';
 export class StepWelcomeComponent {
   @Output() next = new EventEmitter();
 
+  bubbles = [{
+    left: '-88px',
+    top: '-12px'
+  }, {
+    left: '89px',
+    top: '1px'
+  }, {
+    left: '-21px',
+    top: '-49px',
+  }, {
+    left: '-83px',
+    top: '-20px'
+  }, {
+    left: '-72px',
+    top: '30px',
+  }, {
+    left: '35px',
+    top: '46px'
+  }, {
+    left: '89px',
+    top: '-2px'
+  }, {
+    left: '88px',
+    top: '-9px'
+  }, {
+    left: '70px',
+    top: '30px'
+  }, {
+    left: '-71px',
+    top: '30px',
+  }];
+
   email = '';
   name = '';
 

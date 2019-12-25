@@ -1,0 +1,12 @@
+<div [style.animation-delay]="randomAnimationDelay" [ngClass]="{
+  'swirl-left': showSwirlLeft,
+  'swirl-right': showSwirlRight
+}">
+  <div [style.animation-delay]="randomAnimationDelay" class="scale">
+    <div [style.animation-delay]="randomAnimationDelay" class="circle" [ngClass]="{
+      'color-orange-green': showColorOrangeGreen,
+      'color-blue-violete': showColorBlueViolete,
+      'color-violete-yellow': showColorVioleteYellow
+    }"></div>
+  </div>
+</div>

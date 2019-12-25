@@ -1,0 +1,107 @@
+:host {
+  display: block;
+  position: absolute;
+  margin-left: 42px;
+  margin-top: 42px;
+}
+
+.circle {
+  height: 17px;
+  width: 17px;
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.color-orange-green {
+  background-color: rgb(255, 100, 0);
+  animation: 12s steps(1, start) -4s infinite normal forwards running colorChangeOrangeGreen,
+  3s linear -4s 1 normal forwards running fadeIn;
+}
+
+.color-blue-violete {
+  background-color: rgb(0, 116, 232);
+  animation: 12s steps(1, start) -4s infinite normal forwards running colorChangeBlueViolete,
+  3s linear -4s 1 normal forwards running fadeIn;
+}
+
+.color-violete-yellow {
+  background-color: rgb(180, 105, 235);
+  animation: 12s steps(1, start) -4s infinite normal forwards running colorChangeVioleteYellow,
+  3s linear -4s 1 normal forwards running fadeIn;
+}
+
+.scale {
+  transform: scale(0);
+  animation: 6s ease-in-out -4s infinite alternate none running growShrink;
+}
+
+.swirl-right {
+  animation: 6s ease-in-out -4s infinite normal forwards running swirlRight;
+}
+
+.swirl-left {
+  animation: 6s ease-in-out -4s infinite normal forwards running swirlLeft;
+}
+
+@keyframes colorChangeOrangeGreen {
+  0% {
+    background-color: #FF6400;
+  }
+  50% {
+    background-color: #0FA573;
+  }
+}
+
+@keyframes colorChangeBlueViolete {
+  0% {
+    background-color: #0074e8;
+  }
+  50% {
+    background-color: #B469EB;
+  }
+}
+
+@keyframes colorChangeVioleteYellow {
+  0% {
+    background-color: #B469EB;
+  }
+  50% {
+    background-color: #FAB904;
+  }
+}
+
+@keyframes fadeIn {
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes growShrink {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+
+@keyframes swirlRight {
+  0% {
+    transform: rotate(0deg) translateX(-50%);
+  }
+  100% {
+    transform: rotate(360deg) translateX(-50%);
+  }
+}
+
+@keyframes swirlLeft {
+  0% {
+    transform: rotate(0deg) translateX(-50%);
+  }
+  100% {
+    transform: rotate(-360deg) translateX(-50%);
+  }
+}

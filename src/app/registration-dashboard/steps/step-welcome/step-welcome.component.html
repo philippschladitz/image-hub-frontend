@@ -1,4 +1,10 @@
-<mat-icon class="account">account_circle</mat-icon>
+<div class="relative">
+  <mat-icon class="account">
+    account_circle
+  </mat-icon>
+  <app-animated-bubble *ngFor="let bubble of bubbles" [left]="bubble.left" [top]="bubble.top"></app-animated-bubble>
+</div>
+
 <div class="text">{{ email }}</div>
 <h1 class="title">Willkommen bei Image-Hub, {{ name }}!</h1>
 <div class="subtitle">Deine Antworten auf die folgenden Fragen helfen uns dabei, die richtigen Ideen für dich zu finden.</div>

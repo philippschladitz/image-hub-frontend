@@ -9,10 +9,12 @@
   text-align: center;
 
   .account {
+    position: relative;
     width: 100px;
     height: 100px;
     font-size: 100px;
     color: gray;
+    z-index: 1;
   }
 
   .email {
@@ -48,5 +50,9 @@
 
   .link:hover {
     text-decoration: underline;
+  }
+
+  .relative {
+    position: relative;
   }
 }
