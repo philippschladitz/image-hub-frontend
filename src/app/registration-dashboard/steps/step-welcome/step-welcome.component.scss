@@ -55,4 +55,27 @@
   .relative {
     position: relative;
   }
+
+  .name {
+    display: inline-flex;
+    align-items: center;
+    button {
+      margin-left: 16px;
+      mat-icon {
+        color: grey;
+      }
+    }
+  }
+
+  .no-margin {
+    margin: 0;
+  }
+
+  .save-name {
+    display: flex;
+    align-items: baseline;
+    mat-icon {
+      color: grey;
+    }
+  }
 }

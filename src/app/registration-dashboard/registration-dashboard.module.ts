@@ -25,6 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { RegistrationDashboardComponent } from './registration-dashboard/registration-dashboard.component';
 import { RegistrationDashboardRoutingModule } from './registration-dashboard-routing.module';
 import { AnimatedBubbleComponent } from './animated-bubble/animated-bubble.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -42,14 +44,16 @@ import { AnimatedBubbleComponent } from './animated-bubble/animated-bubble.compo
     CommonModule,
     HttpClientModule,
     RegistrationDashboardRoutingModule,
-    FormsModule,
     MatCardModule,
     MatDividerModule,
+    MatFormFieldModule,
+    MatInputModule,
     MatIconModule,
     MatButtonModule,
     MatRadioModule,
     MatProgressBarModule,
     MatSelectModule,
+    FormsModule,
     ReactiveFormsModule,
     SharedModule
   ],

@@ -6,7 +6,27 @@
 </div>
 
 <div class="text">{{ email }}</div>
-<h1 class="title">Willkommen bei Image-Hub, {{ name }}!</h1>
+<h1 class="title" *ngIf="!editName; else editNameBlock">
+  Willkommen bei Image-Hub,
+  <span class="name">
+    {{ name }}!
+    <button mat-icon-button (click)="showEditName()">
+      <mat-icon>create</mat-icon>
+    </button>
+  </span>
+</h1>
+<ng-template #editNameBlock>
+  <h1 class="title no-margin">Willkommen bei Image-Hub</h1>
+  <form class="save-name" [formGroup]="nameInputForm">
+    <mat-form-field appearance="outline">
+      <input matInput formControlName="name" placeholder="Name">
+      <mat-error *ngIf="showNameError">Und du bist ...?</mat-error>
+    </mat-form-field>
+    <button mat-icon-button (click)="saveName()">
+      <mat-icon>check</mat-icon>
+    </button>
+  </form>
+</ng-template>
 <div class="subtitle">Deine Antworten auf die folgenden Fragen helfen uns dabei, die richtigen Ideen für dich zu finden.</div>
 <button mat-raised-button class="proceed" (click)="onNext()">Weiter</button>
 <div>

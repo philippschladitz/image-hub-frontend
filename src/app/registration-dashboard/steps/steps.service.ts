@@ -57,6 +57,15 @@ export class StepsService {
     });
   }
 
+  postName(body: { name: string; }) {
+    return this.httpClient.post(`${this.apiService.apiURL}/user-facts/name`,
+      body,
+    {
+      headers: this.apiService.headers,
+      responseType: 'text'
+    });
+  }
+
   postCountryAndLanguage(body: { language: string; country: string; }) {
     return this.httpClient.post(`${this.apiService.apiURL}/user-facts/country`,
     body,

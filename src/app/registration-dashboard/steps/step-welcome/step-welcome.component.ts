@@ -2,6 +2,7 @@ import { Component, ChangeDetectionStrategy, Output, EventEmitter, ChangeDetecto
 import { StepsService } from '../steps.service';
 import { APIService } from '@app/core';
 import { Router } from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-step-welcome',
@@ -46,12 +47,19 @@ export class StepWelcomeComponent {
 
   email = '';
   name = '';
+  editName = false;
+  nameInputForm: FormGroup;
+
+  get showNameError() {
+    return this.nameInputForm.controls.name.invalid && this.nameInputForm.controls.name.dirty;
+  }
 
   constructor(
     private readonly apiService: APIService,
     private readonly stepsService: StepsService,
     private readonly changeDetectorRef: ChangeDetectorRef,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly formBuilder: FormBuilder,
   ) {
     stepsService.getName().subscribe(name => {
       this.name = name;
@@ -62,6 +70,33 @@ export class StepWelcomeComponent {
       this.email = email;
       this.changeDetectorRef.markForCheck();
     });
+
+    this.nameInputForm = this.formBuilder.group({
+      name: this.formBuilder.control('', [Validators.required, Validators.minLength(1)])
+    });
+  }
+
+  saveName() {
+    if (this.nameInputForm.valid) {
+      this.stepsService.postName({
+        name: this.nameInputForm.value.name,
+      }).subscribe(result => {
+        this.nameInputForm.setValue({
+          name: result
+        });
+        this.name = result;
+        this.editName = false;
+        this.changeDetectorRef.markForCheck();
+      });
+    }
+  }
+
+  showEditName() {
+    this.editName = true;
+    this.nameInputForm.setValue({
+      name: this.name,
+    });
+    this.changeDetectorRef.markForCheck();
   }
 
   onNext() {
