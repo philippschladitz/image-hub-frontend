@@ -4,13 +4,13 @@
 
 <div class="card-wrapper">
   <mat-card class="card" [ngClass]="{'extended-width': step === 3 || step === 4, 'overflow-hidden': step === 4 }">
-    <mat-card-header>
+    <mat-card-header [ngClass]="{'mat-card-header-height': step < 4}">
       <div class="header" *ngIf="step < 4; else progressBar">
         <app-stepper [step]="step"></app-stepper>
         <mat-divider></mat-divider>
       </div>
       <ng-template #progressBar>
-        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        <mat-progress-bar mode="determinate" [value]="progressValue"></mat-progress-bar>
       </ng-template>
     </mat-card-header>
     <mat-card-content [ngSwitch]="step">

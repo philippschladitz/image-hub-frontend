@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { StepsService } from '../steps';
 
 @Component({
@@ -7,12 +7,16 @@ import { StepsService } from '../steps';
   styleUrls: ['./registration-dashboard.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class RegistrationDashboardComponent implements OnInit {
+export class RegistrationDashboardComponent implements OnInit, OnDestroy {
   step = 0;
   topics = [];
+  progressValue = 0;
+
+  private progressBarIntervalId: number;
 
   constructor(
     private readonly stepsService: StepsService,
+    private readonly changeDetectorRef: ChangeDetectorRef,
   ) { }
 
   ngOnInit() {
@@ -24,7 +28,24 @@ export class RegistrationDashboardComponent implements OnInit {
     });
   }
 
+  ngOnDestroy() {
+    window.clearInterval(this.progressBarIntervalId);
+  }
+
   next() {
     this.step++;
+
+    if (this.step === 4) {
+      this.fillProgressBar();
+    }
+  }
+
+  private fillProgressBar() {
+    this.progressBarIntervalId = window.setInterval(() => {
+      if (this.progressValue < 100) {
+        this.progressValue += (100 / 5 / 100);
+        this.changeDetectorRef.markForCheck();
+      }
+    }, 10);
   }
 }

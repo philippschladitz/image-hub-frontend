@@ -13,6 +13,10 @@
     flex-direction: column;
 
     mat-card-header {
+      min-height: 10px;
+    }
+
+    .mat-card-header-height {
       min-height: 55px;
     }
 

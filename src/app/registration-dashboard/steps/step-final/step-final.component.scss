@@ -1,15 +1,91 @@
 :host {
-  display: flex;
+  display: block;
+  position: relative;
   width: 100%;
   height: 100%;
-  justify-content: space-between;
+}
+
+.fade-in {
+  animation: fadeIn 500ms linear forwards;
+}
+
+.fade-out {
+  animation: fadeOut 500ms linear forwards;
+}
+
+.first-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   overflow: hidden;
+}
+
+.second-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  opacity: 0;
 }
 
 .grid {
   display: grid;
   grid-auto-flow: column;
   column-gap: 12px;
+}
+
+.pin {
+  width: 210px;
+  height: 310px;
+  position: relative;
+
+  img {
+    border-radius: 5px;
+    width: 100%;
+    height: 100%
+  }
+
+  .red-button {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    width: 75px;
+    height: 35px;
+    background-color: red;
+    color: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    align-items: center;
+  }
+
+  .link-button {
+    position: absolute;
+    left: 5px;
+    bottom: 5px;
+    width: 180px;
+    height: 25px;
+    background: lightgray;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 5px;
+    font-weight: bold;
+
+    mat-icon {
+      margin-right: 5px;
+    }
+  }
 }
 
 .rectangle {
@@ -32,6 +108,21 @@
   animation: move3 10s infinite linear;
 }
 
+.rectangle-container {
+  height: 100%;
+}
+
+.text {
+  h2 {
+    width: 200px;
+    font-weight: 400;
+  }
+}
+
+.move-in {
+  animation: moveIn 1s linear forwards;
+}
+
 @keyframes move1 {
   from { transform: translateY(-20px)}
   to { transform: translateY(-750px) }
@@ -47,16 +138,17 @@
   to { transform: translateY(-600px) }
 }
 
-.rectangle-container {
-  height: 100%;
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-.text {
-  margin-top: 140px;
-  margin-left: 24px;
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
 
-  h2 {
-    width: 200px;
-    font-weight: 400;
-  }
+@keyframes moveIn {
+  from { transform: translateY(400px) scale(0); }
+  to { transform:  translateY(0px) scale(1); }
 }

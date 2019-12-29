@@ -1,6 +1,6 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
-import { of } from 'rxjs';
+import { of, Subscription } from 'rxjs';
 import { delay } from 'rxjs/operators';
 
 @Component({
@@ -9,8 +9,7 @@ import { delay } from 'rxjs/operators';
   styleUrls: ['./step-final.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class StepFinalComponent implements OnInit {
-
+export class StepFinalComponent implements OnInit, OnDestroy {
   rectangles = new Array(10).fill(0);
   colors = [
     '#B37356',
@@ -19,9 +18,15 @@ export class StepFinalComponent implements OnInit {
     '#6266CC',
     '#5F62B3',
   ];
+  firstLayerFadeOut = false;
+  secondLayerFadeIn = false;
+
+  private fadeSubscription: Subscription;
+  private redirectSubscription: Subscription;
 
   constructor(
     private readonly router: Router,
+    private readonly changeDetectorRef: ChangeDetectorRef,
   ) { }
 
   getRandomColor() {
@@ -30,7 +35,18 @@ export class StepFinalComponent implements OnInit {
   }
 
   ngOnInit() {
-    of({})
+    this.fadeSubscription = of({})
+      .pipe(
+        delay(2000),
+      ).subscribe(
+        () => {
+          this.firstLayerFadeOut = true;
+          this.secondLayerFadeIn = true;
+          this.changeDetectorRef.markForCheck();
+        }
+      );
+
+    this.redirectSubscription = of({})
       .pipe(
         delay(5000),
       ).subscribe(
@@ -38,5 +54,10 @@ export class StepFinalComponent implements OnInit {
           this.router.navigateByUrl('dashboard');
         }
       );
+  }
+
+  ngOnDestroy() {
+      this.fadeSubscription.unsubscribe();
+        this.redirectSubscription.unsubscribe();
   }
 }
