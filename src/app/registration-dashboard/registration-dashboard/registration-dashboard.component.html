@@ -3,22 +3,38 @@
 <app-toolbar></app-toolbar>
 
 <div class="card-wrapper">
-  <mat-card class="card" [ngClass]="{'extended-width': step === 3 || step === 4, 'overflow-hidden': step === 4 }">
-    <mat-card-header [ngClass]="{'mat-card-header-height': step < 4}">
+  <mat-card
+    class="card"
+    [ngClass]="{
+      'extended-width': step === 3 || step === 4,
+      'overflow-hidden': step === 4
+    }"
+  >
+    <mat-card-header [ngClass]="{ 'mat-card-header-height': step < 4 }">
       <div class="header" *ngIf="step < 4; else progressBar">
         <app-stepper [step]="step"></app-stepper>
         <mat-divider></mat-divider>
       </div>
       <ng-template #progressBar>
-        <mat-progress-bar mode="determinate" [value]="progressValue"></mat-progress-bar>
+        <mat-progress-bar
+          mode="determinate"
+          [value]="progressValue"
+        ></mat-progress-bar>
       </ng-template>
     </mat-card-header>
     <mat-card-content [ngSwitch]="step">
-       <app-step-welcome *ngSwitchCase="0" (next)="next()"></app-step-welcome>
-       <app-step-gender *ngSwitchCase="1" (next)="next()"></app-step-gender>
-       <app-step-language-country *ngSwitchCase="2" (next)="next()"></app-step-language-country>
-       <app-step-topics [topics]="topics" *ngSwitchCase="3" (next)="next()"></app-step-topics>
-       <app-step-final *ngSwitchCase="4"></app-step-final>
+      <app-step-welcome *ngSwitchCase="0" (next)="next()"></app-step-welcome>
+      <app-step-gender *ngSwitchCase="1" (next)="next()"></app-step-gender>
+      <app-step-language-country
+        *ngSwitchCase="2"
+        (next)="next()"
+      ></app-step-language-country>
+      <app-step-topics
+        [topics]="topics"
+        *ngSwitchCase="3"
+        (next)="next()"
+      ></app-step-topics>
+      <app-step-final *ngSwitchCase="4"></app-step-final>
     </mat-card-content>
   </mat-card>
 </div>

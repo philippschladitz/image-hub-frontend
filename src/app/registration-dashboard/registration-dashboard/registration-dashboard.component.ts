@@ -1,10 +1,16 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy } from '@angular/core';
-import { StepsService } from '../steps';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  OnDestroy
+} from "@angular/core";
+import { StepsService } from "../steps";
 
 @Component({
-  selector: 'app-registration-dashboard',
-  templateUrl: './registration-dashboard.component.html',
-  styleUrls: ['./registration-dashboard.component.scss'],
+  selector: "app-registration-dashboard",
+  templateUrl: "./registration-dashboard.component.html",
+  styleUrls: ["./registration-dashboard.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RegistrationDashboardComponent implements OnInit, OnDestroy {
@@ -16,8 +22,8 @@ export class RegistrationDashboardComponent implements OnInit, OnDestroy {
 
   constructor(
     private readonly stepsService: StepsService,
-    private readonly changeDetectorRef: ChangeDetectorRef,
-  ) { }
+    private readonly changeDetectorRef: ChangeDetectorRef
+  ) {}
 
   ngOnInit() {
     this.stepsService.getAvailableTopics().subscribe(response => {
@@ -43,7 +49,7 @@ export class RegistrationDashboardComponent implements OnInit, OnDestroy {
   private fillProgressBar() {
     this.progressBarIntervalId = window.setInterval(() => {
       if (this.progressValue < 100) {
-        this.progressValue += (100 / 5 / 100);
+        this.progressValue += 100 / 5 / 100;
         this.changeDetectorRef.markForCheck();
       }
     }, 10);
