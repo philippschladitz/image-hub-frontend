@@ -1,4 +1,12 @@
-import { Component, ChangeDetectionStrategy, Input, HostBinding, OnInit } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  Input,
+  HostBinding,
+  OnInit,
+  OnChanges,
+  ChangeDetectorRef
+} from '@angular/core';
 
 @Component({
   selector: 'app-background-images',
@@ -6,7 +14,7 @@ import { Component, ChangeDetectionStrategy, Input, HostBinding, OnInit } from '
   styleUrls: ['./background-images.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class BackgroundImagesComponent implements OnInit {
+export class BackgroundImagesComponent implements OnInit, OnChanges {
   @Input() top = '0';
 
   @HostBinding('style.top') styleTop: string;
@@ -27,14 +35,14 @@ export class BackgroundImagesComponent implements OnInit {
   }));
 
   get images() {
-    return [
-      ...this.smallImages,
-      ...this.mediumImages,
-      ...this.largeImages
-    ];
+    return [...this.smallImages, ...this.mediumImages, ...this.largeImages];
   }
 
   ngOnInit() {
+    this.styleTop = this.top;
+  }
+
+  ngOnChanges() {
     this.styleTop = this.top;
   }
 }
