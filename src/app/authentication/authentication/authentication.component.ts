@@ -7,7 +7,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./authentication.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AuthenticationComponent {
+export class AuthenticationComponent implements OnInit {
   registration = true;
 
   smallImages = new Array(9).fill(0).map((_, index) => ({
@@ -26,17 +26,12 @@ export class AuthenticationComponent {
   }));
 
   get images() {
-    return [
-      ...this.smallImages,
-      ...this.mediumImages,
-      ...this.largeImages
-    ];
+    return [...this.smallImages, ...this.mediumImages, ...this.largeImages];
   }
 
-  constructor(
-    private readonly activatedRoute: ActivatedRoute,
-    private readonly changeDetectorRef: ChangeDetectorRef,
-  ) {
+  constructor(private readonly activatedRoute: ActivatedRoute, private readonly changeDetectorRef: ChangeDetectorRef) {}
+
+  ngOnInit() {
     const showLogin = this.activatedRoute.snapshot.queryParams.login === 'true';
     this.registration = !showLogin;
     this.changeDetectorRef.markForCheck();

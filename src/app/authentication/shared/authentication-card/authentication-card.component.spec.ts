@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AuthenticationCardComponent } from './authentication-card.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { By } from '@angular/platform-browser';
 
 describe('AuthenticationCardComponent', () => {
   let component: AuthenticationCardComponent;
@@ -8,9 +12,9 @@ describe('AuthenticationCardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AuthenticationCardComponent ]
-    })
-    .compileComponents();
+      declarations: [AuthenticationCardComponent],
+      imports: [NoopAnimationsModule, MatButtonModule, MatCardModule]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -21,5 +25,13 @@ describe('AuthenticationCardComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should emit output event', done => {
+    component.buttonClick.subscribe(() => {
+      done();
+    });
+
+    fixture.debugElement.query(By.css('button')).nativeElement.click();
   });
 });
