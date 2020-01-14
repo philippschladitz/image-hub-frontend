@@ -2,6 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService } from '@app/core';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-registration',
@@ -13,7 +14,7 @@ export class RegistrationComponent implements OnInit {
   form: FormGroup;
 
   get showAgeError() {
-   return this.form.controls.age.invalid && this.form.controls.age.dirty;
+    return this.form.controls.age.invalid && this.form.controls.age.dirty;
   }
 
   get showPasswordError() {
@@ -27,32 +28,37 @@ export class RegistrationComponent implements OnInit {
   constructor(
     private readonly formBuilder: FormBuilder,
     private readonly authenticationService: AuthenticationService,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly matSnackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
     this.form = this.formBuilder.group({
-      email: this.formBuilder.control('', [
-        Validators.required,
-        Validators.email
-      ]),
+      email: this.formBuilder.control('', [Validators.required, Validators.email]),
       password: this.formBuilder.control('', [Validators.required, Validators.minLength(6)]),
-      age: this.formBuilder.control('', [Validators.required, Validators.min(10)]),
+      age: this.formBuilder.control('', [Validators.required, Validators.min(10)])
     });
   }
 
   register() {
     if (this.form.valid) {
-      this.authenticationService.register({
-        email: this.form.value.email,
-        password: this.form.value.password,
-        age: this.form.value.age,
-      }).subscribe(registerResponse => {
-        if (registerResponse) {
-          console.log('success');
-          this.router.navigateByUrl('registration-dashboard');
-        }
-      });
+      this.authenticationService
+        .register({
+          email: this.form.value.email,
+          password: this.form.value.password,
+          age: this.form.value.age
+        })
+        .subscribe(
+          registerResponse => {
+            if (registerResponse) {
+              console.log('success');
+              this.router.navigateByUrl('registration-dashboard');
+            }
+          },
+          err => {
+            this.matSnackBar.open('Registrierung fehlgeschlagen.');
+          }
+        );
     } else {
       console.error('form not valid');
     }

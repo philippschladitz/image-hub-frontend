@@ -59,7 +59,7 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  fit('should have email error', () => {
+  it('should have email error', () => {
     component.form.patchValue({
       email: 'wrongEmail'
     });
@@ -70,7 +70,7 @@ describe('LoginComponent', () => {
     expect(component.form.value.email).toEqual('wrongEmail');
   });
 
-  fit('should have password required error', () => {
+  it('should have password required error', () => {
     component.form.patchValue({
       email: 'correct@email.de'
     });
@@ -81,7 +81,7 @@ describe('LoginComponent', () => {
     expect(component.form.get('password').errors.required).toBeTruthy();
   });
 
-  fit('should login', () => {
+  it('should login', () => {
     component.form.patchValue({
       email: 'correct@email.de',
       password: 'password'
@@ -97,7 +97,7 @@ describe('LoginComponent', () => {
     expect(router.navigateByUrl).toHaveBeenCalled();
   });
 
-  fit('should show snackbar with wrong email or password', () => {
+  it('should show snackbar with wrong email or password', () => {
     loginResponse.status = 401;
     component.form.patchValue({
       email: 'correct@email.de',
@@ -113,7 +113,7 @@ describe('LoginComponent', () => {
     expect(snackBar.open).toHaveBeenCalled();
   });
 
-  fit('should show snackbar with server unavailable', () => {
+  it('should show snackbar with server unavailable', () => {
     component.form.patchValue({
       email: 'correct@email.de',
       password: 'password'
@@ -132,7 +132,7 @@ describe('LoginComponent', () => {
     expect(snackBar.open).toHaveBeenCalled();
   });
 
-  fit('should show missing password and email snackbar', () => {
+  it('should show missing password and email snackbar', () => {
     component.form.patchValue({
       email: 'wrongemail',
       password: ''
