@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, ValidatorFn } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, ValidatorFn, FormControl } from '@angular/forms';
 import { StepsService } from '../steps.service';
 
 @Component({
@@ -16,16 +16,16 @@ export class StepGenderComponent {
     return this.form.valid;
   }
 
-  constructor(
-    private readonly formBuilder: FormBuilder,
-    private readonly stepsService: StepsService
-    ) {
-    this.form = formBuilder.group({
-      gender: formBuilder.control('', [Validators.required]),
-      userDefinedGender: formBuilder.control('')
-    }, {
-      validators: [this.userDefinedGenderValidator()]
-    });
+  constructor(private readonly formBuilder: FormBuilder, private readonly stepsService: StepsService) {
+    this.form = formBuilder.group(
+      {
+        gender: formBuilder.control('', [Validators.required, this.acceptedGendersValidator()]),
+        userDefinedGender: formBuilder.control('')
+      },
+      {
+        validators: [this.userDefinedGenderValidator()]
+      }
+    );
   }
 
   isGenderUserDefined() {
@@ -34,20 +34,33 @@ export class StepGenderComponent {
 
   onNext() {
     if (this.form.valid) {
-      this.stepsService.postGender({
-        gender: this.form.value.gender,
-        userDefinedGender: this.form.value.userDefinedGender,
-      }).subscribe(() => {
-        this.next.emit();
-      });
+      this.stepsService
+        .postGender({
+          gender: this.form.value.gender,
+          userDefinedGender: this.form.value.userDefinedGender
+        })
+        .subscribe(() => {
+          this.next.emit();
+        });
     }
   }
 
   // define a validation function which returns an object with an error-value if the validation failed
   private userDefinedGenderValidator(): ValidatorFn {
-    return (group: FormGroup) => group.get('gender').value === 'userDefined' &&
-      group.get('userDefinedGender').value === '' ? {
-        userDefinedGenderNotProvided: true
-      } : null;
+    return (group: FormGroup) =>
+      group.get('gender').value === 'userDefined' && group.get('userDefinedGender').value === ''
+        ? {
+            userDefinedGenderNotProvided: true
+          }
+        : null;
+  }
+
+  private acceptedGendersValidator(): ValidatorFn {
+    return (control: FormControl) =>
+      control.value !== 'male' && control.value !== 'female' && control.value !== 'userDefined'
+        ? {
+            acceptedGendersNotProvided: true
+          }
+        : null;
   }
 }
