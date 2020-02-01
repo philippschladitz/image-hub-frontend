@@ -10,7 +10,7 @@ import { of } from 'rxjs';
 
 import { TopicCardComponent } from '../topic-card/topic-card.component';
 import { StepTopicsComponent } from './step-topics.component';
-import { StepsService } from '../steps.service';
+import { StepsService } from '../../../shared';
 
 describe('StepTopicsComponent', () => {
   let component: StepTopicsComponent;

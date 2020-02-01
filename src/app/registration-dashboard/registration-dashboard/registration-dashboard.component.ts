@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy } from '@angular/core';
-import { StepsService } from '../steps';
+import { StepsService } from '../../shared';
 
 @Component({
   selector: 'app-registration-dashboard',

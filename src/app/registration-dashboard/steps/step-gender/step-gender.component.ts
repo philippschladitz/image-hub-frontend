@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ValidatorFn, FormControl } from '@angular/forms';
-import { StepsService } from '../steps.service';
+import { StepsService } from '../../../shared';
 
 @Component({
   selector: 'app-step-gender',

@@ -10,16 +10,15 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { SharedModule } from '@app/shared/shared.module';
+import { SharedModule, StepsService } from '@app/shared';
 import { StepperComponent } from './stepper/stepper.component';
 import {
   StepWelcomeComponent,
   StepGenderComponent,
-  StepsService,
   StepLanguageCountryComponent,
   StepTopicsComponent,
   TopicCardComponent,
-  StepFinalComponent,
+  StepFinalComponent
 } from './steps';
 import { HttpClientModule } from '@angular/common/http';
 import { RegistrationDashboardComponent } from './registration-dashboard/registration-dashboard.component';
@@ -38,7 +37,7 @@ import { MatInputModule } from '@angular/material/input';
     StepTopicsComponent,
     TopicCardComponent,
     StepFinalComponent,
-    AnimatedBubbleComponent,
+    AnimatedBubbleComponent
   ],
   imports: [
     CommonModule,
@@ -57,8 +56,6 @@ import { MatInputModule } from '@angular/material/input';
     ReactiveFormsModule,
     SharedModule
   ],
-  providers: [
-    StepsService
-  ]
+  providers: [StepsService]
 })
-export class RegistrationDashboardModule { }
+export class RegistrationDashboardModule {}

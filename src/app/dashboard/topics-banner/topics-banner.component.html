@@ -1,0 +1,13 @@
+<h3>Hallo {{ name }}, dein Feed besteht aus diesen Themen</h3>
+<div class="cards">
+  <div *ngFor="let topic of fiveTopics" class="card">
+    <img [src]="topic.imageUrl" />
+    <div class="overlay">
+      <div class="background"></div>
+    </div>
+    <span>{{ topic.title }}</span>
+  </div>
+  <button mat-icon-button>
+    <mat-icon>edit</mat-icon>
+  </button>
+</div>

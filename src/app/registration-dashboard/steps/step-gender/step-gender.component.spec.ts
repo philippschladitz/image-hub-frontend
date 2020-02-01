@@ -10,7 +10,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
 
 import { StepGenderComponent } from './step-gender.component';
-import { StepsService } from '../steps.service';
+import { StepsService } from '../../../shared';
 
 describe('StepGenderComponent', () => {
   let component: StepGenderComponent;

@@ -14,7 +14,7 @@ import { By } from '@angular/platform-browser';
 
 import { of } from 'rxjs';
 
-import { SharedModule } from '@app/shared';
+import { SharedModule, StepsService } from '@app/shared';
 
 import { RegistrationDashboardComponent } from './registration-dashboard.component';
 import { AnimatedBubbleComponent } from '../animated-bubble/animated-bubble.component';
@@ -25,8 +25,7 @@ import {
   StepLanguageCountryComponent,
   StepTopicsComponent,
   StepFinalComponent,
-  TopicCardComponent,
-  StepsService
+  TopicCardComponent
 } from '../steps';
 
 describe('RegistrationDashboardComponent', () => {

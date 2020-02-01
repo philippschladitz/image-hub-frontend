@@ -9,7 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { of } from 'rxjs';
 
-import { StepsService } from '../steps.service';
+import { StepsService } from '../../../shared';
 import { StepLanguageCountryComponent } from './step-language-country.component';
 
 describe('StepLanguageCountryComponent', () => {

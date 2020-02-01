@@ -1,0 +1,42 @@
+:host {
+  display: flex;
+  flex-direction: row;
+  height: 150px;
+  margin-top: 8px;
+  background: #efefef;
+}
+
+.blue-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0074e8;
+  width: 100%;
+  padding: 48px;
+  border-top-right-radius: 80px 380px;
+  max-width: 30vw;
+  color: white;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin: 8px;
+  mat-icon {
+    margin-right: 8px;
+    width: 42px;
+    height: 42px;
+    font-size: 42px;
+  }
+}
+
+h1 {
+  margin: 0;
+}

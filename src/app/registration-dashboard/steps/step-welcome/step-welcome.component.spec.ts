@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 import { of } from 'rxjs';
 
 import { AnimatedBubbleComponent } from '@app/registration-dashboard/animated-bubble/animated-bubble.component';
-import { StepsService } from '../steps.service';
+import { StepsService } from '../../../shared';
 import { StepWelcomeComponent } from './step-welcome.component';
 
 describe('StepWelcomeComponent', () => {

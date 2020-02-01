@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy, Output, EventEmitter, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
-import { StepsService } from '../steps.service';
+import { StepsService } from '../../../shared';
 import { minimumTopicsToSelectValidator } from '../minimum-topics-to-select.validator';
 
 @Component({
