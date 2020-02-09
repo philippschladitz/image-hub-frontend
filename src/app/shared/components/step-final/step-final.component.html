@@ -1,0 +1,52 @@
+<div class="first-layer" [ngClass]="{ 'fade-out': firstLayerFadeOut }">
+  <div class="text">
+    <h1>Fertig!</h1>
+    <h2>Wir füllen deinen Homefeed mit vielen Pins ...</h2>
+  </div>
+  <div class="rectangle-container">
+    <div class="grid">
+      <div>
+        <div
+          *ngFor="let rectangle of rectangles"
+          [style.backgroundColor]="getRandomColor()"
+          class="rectangle move-1"
+        ></div>
+      </div>
+      <div>
+        <div
+          *ngFor="let rectangle of rectangles"
+          [style.backgroundColor]="getRandomColor()"
+          class="rectangle move-2"
+        ></div>
+      </div>
+      <div>
+        <div
+          *ngFor="let rectangle of rectangles"
+          [style.backgroundColor]="getRandomColor()"
+          class="rectangle move-3"
+        ></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="second-layer" [ngClass]="{ 'fade-in': secondLayerFadeIn }">
+  <div class="text">
+    <h1>Pins sind Ideen.</h1>
+    <h2>Sie sind Links, die sich Nutzer im Internet merken.</h2>
+  </div>
+  <div>
+    <div class="pin" [ngClass]="{ 'move-in': secondLayerFadeIn }">
+      <img src="/assets/topics/cats.jpg" />
+      <div class="red-button">
+        Merken
+      </div>
+      <div class="link-button">
+        <mat-icon>
+          arrow_forward
+        </mat-icon>
+        unsplash.com
+      </div>
+    </div>
+  </div>
+</div>

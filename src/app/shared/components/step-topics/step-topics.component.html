@@ -1,0 +1,23 @@
+<h5 class="title">Letzter Schritt! Sag uns, was dich interessiert.</h5>
+
+<form [formGroup]="form" class="topics">
+  <ng-container formArrayName="topics">
+    <app-topic-card
+      *ngFor="let topic of formTopics.controls; index as i; trackBy: trackByTopicName"
+      [topicName]="topics[i].name"
+      [imageUrl]="topics[i].imageUrl"
+      formControlName="{{ i }}"
+    >
+    </app-topic-card>
+  </ng-container>
+</form>
+
+<div>
+  <div class="gradient"></div>
+  <button mat-raised-button [disabled]="!isNextEnabled" class="proceed" (click)="onNext()">
+    <ng-container *ngIf="topicsToSelect > 0; else readyText"> {{ topicsToSelect }} auswählen </ng-container>
+    <ng-template #readyText>
+      Fertig
+    </ng-template>
+  </button>
+</div>

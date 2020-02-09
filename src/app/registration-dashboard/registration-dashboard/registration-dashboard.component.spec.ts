@@ -67,7 +67,7 @@ describe('RegistrationDashboardComponent', () => {
         StepperComponent,
         StepWelcomeComponent,
         StepGenderComponent,
-        StepLanguageCountryComponent,
+        StepLanguageCountryComponent
       ],
       imports: [
         NoopAnimationsModule,

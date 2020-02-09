@@ -1,0 +1,9 @@
+:host {
+  display: flex;
+  flex-direction: column;
+
+  .close {
+    justify-self: flex-end;
+    align-self: flex-end;
+  }
+}
