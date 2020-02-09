@@ -27,6 +27,39 @@ export class DashboardComponent implements OnInit {
       this.changeDetectorRef.markForCheck();
     });
 
+    this.init();
+  }
+
+  closeBanner() {
+    this.firstVisit = false;
+    this.changeDetectorRef.markForCheck();
+  }
+
+  openTopicsDialog() {
+    this.matDialog
+      .open(EditTopicsDialogComponent, {
+        width: '80vw',
+        data: {
+          availableTopics: this.availableTopics.map(t => ({
+            name: t.id,
+            imageUrl: t.imageUrl
+          })),
+          selectedTopics: this.topics.map(t => ({
+            name: t.title,
+            imageUrl: t.imageUrl
+          }))
+        }
+      })
+      .afterClosed()
+      .subscribe(success => {
+        if (success) {
+          this.init();
+        }
+      });
+  }
+
+  private init() {
+    // load topics
     this.stepsService
       .getAvailableTopics()
       .pipe(
@@ -52,31 +85,7 @@ export class DashboardComponent implements OnInit {
         });
         this.changeDetectorRef.markForCheck();
       });
-  }
 
-  closeBanner() {
-    this.firstVisit = false;
-    this.changeDetectorRef.markForCheck();
-  }
-
-  openTopicsDialog() {
-    this.matDialog
-      .open(EditTopicsDialogComponent, {
-        width: '80vw',
-        data: {
-          availableTopics: this.availableTopics.map(t => ({
-            name: t.id,
-            imageUrl: t.imageUrl
-          })),
-          selectedTopics: this.topics.map(t => ({
-            name: t.title,
-            imageUrl: t.imageUrl
-          }))
-        }
-      })
-      .afterClosed()
-      .subscribe(result => {
-        console.log(result);
-      });
+    // TODO: load pins
   }
 }

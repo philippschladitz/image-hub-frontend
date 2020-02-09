@@ -41,6 +41,5 @@ import { TopicCardComponent, StepTopicsComponent, StepFinalComponent, EditTopics
     StepFinalComponent,
     EditTopicsDialogComponent
   ],
-  entryComponents: [EditTopicsDialogComponent]
 })
 export class SharedModule {}

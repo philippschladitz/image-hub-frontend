@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, Inject } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Inject, HostBinding } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
@@ -12,8 +12,9 @@ export class EditTopicsDialogComponent implements OnInit {
     name: string;
     imageUrl: string;
   }[];
-
   selectedTopics: string[];
+
+  @HostBinding('class') class = 'mat-typography';
 
   constructor(
     private readonly dialogRef: MatDialogRef<EditTopicsDialogComponent>,
@@ -37,5 +38,9 @@ export class EditTopicsDialogComponent implements OnInit {
 
   close() {
     this.dialogRef.close();
+  }
+
+  closeSuccess() {
+    this.dialogRef.close(true);
   }
 }
