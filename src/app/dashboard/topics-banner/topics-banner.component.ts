@@ -1,4 +1,6 @@
-import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { EditTopicsDialogComponent } from '@app/shared';
 
 @Component({
   selector: 'app-topics-banner',
@@ -12,6 +14,7 @@ export class TopicsBannerComponent {
     title: string;
     imageUrl: string;
   }>;
+  @Output() openDialog = new EventEmitter();
 
   get fiveTopics() {
     return this.topics ? this.topics.slice(0, 5) : [];

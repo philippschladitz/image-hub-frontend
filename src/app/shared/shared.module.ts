@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -10,18 +11,36 @@ import { MatDividerModule } from '@angular/material/divider';
 
 import { BackgroundImagesComponent } from './background-images/background-images.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
+import { TopicCardComponent, StepTopicsComponent, StepFinalComponent, EditTopicsDialogComponent } from './components';
 
 @NgModule({
-  declarations: [BackgroundImagesComponent, ToolbarComponent],
+  declarations: [
+    BackgroundImagesComponent,
+    ToolbarComponent,
+    TopicCardComponent,
+    StepTopicsComponent,
+    StepFinalComponent,
+    EditTopicsDialogComponent
+  ],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     MatGridListModule,
     MatToolbarModule,
     MatInputModule,
     MatIconModule,
     MatButtonModule,
-    MatDividerModule,
+    MatDividerModule
   ],
-  exports: [BackgroundImagesComponent, ToolbarComponent]
+  exports: [
+    BackgroundImagesComponent,
+    ToolbarComponent,
+    TopicCardComponent,
+    StepTopicsComponent,
+    StepFinalComponent,
+    EditTopicsDialogComponent
+  ],
+  entryComponents: [EditTopicsDialogComponent]
 })
-export class SharedModule { }
+export class SharedModule {}

@@ -19,14 +19,7 @@ import { SharedModule, StepsService } from '@app/shared';
 import { RegistrationDashboardComponent } from './registration-dashboard.component';
 import { AnimatedBubbleComponent } from '../animated-bubble/animated-bubble.component';
 import { StepperComponent } from '../stepper/stepper.component';
-import {
-  StepWelcomeComponent,
-  StepGenderComponent,
-  StepLanguageCountryComponent,
-  StepTopicsComponent,
-  StepFinalComponent,
-  TopicCardComponent
-} from '../steps';
+import { StepWelcomeComponent, StepGenderComponent, StepLanguageCountryComponent } from '../steps';
 
 describe('RegistrationDashboardComponent', () => {
   let component: RegistrationDashboardComponent;
@@ -75,9 +68,6 @@ describe('RegistrationDashboardComponent', () => {
         StepWelcomeComponent,
         StepGenderComponent,
         StepLanguageCountryComponent,
-        StepTopicsComponent,
-        StepFinalComponent,
-        TopicCardComponent
       ],
       imports: [
         NoopAnimationsModule,

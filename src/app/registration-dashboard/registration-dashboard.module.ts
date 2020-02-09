@@ -12,14 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { SharedModule, StepsService } from '@app/shared';
 import { StepperComponent } from './stepper/stepper.component';
-import {
-  StepWelcomeComponent,
-  StepGenderComponent,
-  StepLanguageCountryComponent,
-  StepTopicsComponent,
-  TopicCardComponent,
-  StepFinalComponent
-} from './steps';
+import { StepWelcomeComponent, StepGenderComponent, StepLanguageCountryComponent } from './steps';
 import { HttpClientModule } from '@angular/common/http';
 import { RegistrationDashboardComponent } from './registration-dashboard/registration-dashboard.component';
 import { RegistrationDashboardRoutingModule } from './registration-dashboard-routing.module';
@@ -34,9 +27,6 @@ import { MatInputModule } from '@angular/material/input';
     StepWelcomeComponent,
     StepGenderComponent,
     StepLanguageCountryComponent,
-    StepTopicsComponent,
-    TopicCardComponent,
-    StepFinalComponent,
     AnimatedBubbleComponent
   ],
   imports: [

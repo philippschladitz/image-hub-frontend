@@ -1,13 +1,13 @@
-<h3>Hallo {{ name }}, dein Feed besteht aus diesen Themen</h3>
+<h3 class="mat-headline">Hallo {{ name }}, dein Feed besteht aus diesen Themen</h3>
 <div class="cards">
-  <div *ngFor="let topic of fiveTopics" class="card">
+  <div *ngFor="let topic of fiveTopics" class="card" (click)="this.openDialog.emit()">
     <img [src]="topic.imageUrl" />
     <div class="overlay">
       <div class="background"></div>
     </div>
     <span>{{ topic.title }}</span>
   </div>
-  <button mat-icon-button>
+  <button mat-icon-button (click)="this.openDialog.emit()">
     <mat-icon>edit</mat-icon>
   </button>
 </div>

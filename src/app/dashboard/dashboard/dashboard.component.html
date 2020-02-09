@@ -1,5 +1,5 @@
 <app-toolbar></app-toolbar>
 <app-banner *ngIf="firstVisit; else topicsBlock" (close)="closeBanner()"></app-banner>
 <ng-template #topicsBlock>
-  <app-topics-banner [name]="name" [topics]="topics"></app-topics-banner>
+  <app-topics-banner [name]="name" [topics]="topics" (openDialog)="openTopicsDialog()"></app-topics-banner>
 </ng-template>
