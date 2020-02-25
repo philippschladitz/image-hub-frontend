@@ -4,7 +4,7 @@
   <ng-container formArrayName="topics">
     <app-topic-card
       *ngFor="let topic of formTopics.controls; index as i; trackBy: trackByTopicName"
-      [topicName]="topics[i].name"
+      [topicName]="topics[i].name.toLowerCase().replace('_', '-')"
       [imageUrl]="topics[i].imageUrl"
       formControlName="{{ i }}"
     >

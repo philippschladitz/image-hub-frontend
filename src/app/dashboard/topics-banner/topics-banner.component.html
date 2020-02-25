@@ -5,7 +5,7 @@
     <div class="overlay">
       <div class="background"></div>
     </div>
-    <span>{{ topic.title }}</span>
+    <span>{{ topic.title.toLowerCase().replace('_', '-') }}</span>
   </div>
   <button mat-icon-button (click)="this.openDialog.emit()">
     <mat-icon>edit</mat-icon>

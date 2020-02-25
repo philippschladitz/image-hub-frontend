@@ -40,6 +40,6 @@ import { TopicCardComponent, StepTopicsComponent, StepFinalComponent, EditTopics
     StepTopicsComponent,
     StepFinalComponent,
     EditTopicsDialogComponent
-  ],
+  ]
 })
 export class SharedModule {}
