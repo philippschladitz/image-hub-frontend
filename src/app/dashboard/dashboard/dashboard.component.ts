@@ -1,7 +1,8 @@
-import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { StepsService, EditTopicsDialogComponent } from '@app/shared';
 import { tap, switchMap } from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
+import { PinOverviewComponent } from '../pin-overview/pin-overview.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,6 +15,9 @@ export class DashboardComponent implements OnInit {
   name: string;
   availableTopics = [];
   topics = [];
+
+  @ViewChild(PinOverviewComponent)
+  pinOverview: PinOverviewComponent;
 
   constructor(
     private readonly changeDetectorRef: ChangeDetectorRef,
@@ -83,9 +87,10 @@ export class DashboardComponent implements OnInit {
             imageUrl: findTopic.imageUrl
           };
         });
+
+        this.pinOverview.load();
+
         this.changeDetectorRef.markForCheck();
       });
-
-    // TODO: load pins
   }
 }
