@@ -1,1 +1,13 @@
 <img src="{{ imageUrl }}" />
+<div class="overlay">
+  <div class="background"></div>
+  <button class="remember-button" mat-flat-button color="primary">Merken</button>
+  <div class="action-button-wrapper">
+    <button mat-flat-button>
+      <mat-icon>arrow_forward</mat-icon>
+      {{ url }}
+    </button>
+    <button mat-icon-button><mat-icon>cloud_upload</mat-icon></button>
+    <button mat-icon-button><mat-icon>more_horiz</mat-icon></button>
+  </div>
+</div>

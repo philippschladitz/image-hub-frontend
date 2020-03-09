@@ -13,4 +13,8 @@ export class PinComponent {
   get imageUrl() {
     return this.pin.image;
   }
+
+  get url() {
+    return new URL(this.pin.link).host;
+  }
 }
