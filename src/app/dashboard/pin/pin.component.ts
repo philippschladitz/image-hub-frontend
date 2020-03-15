@@ -17,4 +17,8 @@ export class PinComponent {
   get url() {
     return new URL(this.pin.link).host;
   }
+
+  get topicName() {
+    return this.pin.topic;
+  }
 }

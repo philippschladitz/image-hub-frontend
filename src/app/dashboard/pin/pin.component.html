@@ -3,11 +3,67 @@
   <div class="background"></div>
   <button class="remember-button" mat-flat-button color="primary">Merken</button>
   <div class="action-button-wrapper">
-    <button mat-flat-button>
+    <a mat-flat-button href="{{ pin.link }}" target="_blank">
       <mat-icon>arrow_forward</mat-icon>
       {{ url }}
-    </button>
-    <button mat-icon-button><mat-icon>cloud_upload</mat-icon></button>
-    <button mat-icon-button><mat-icon>more_horiz</mat-icon></button>
+    </a>
+    <button mat-icon-button [matMenuTriggerFor]="shareMenu"><mat-icon>share</mat-icon></button>
+    <button mat-icon-button [matMenuTriggerFor]="pinMenu"><mat-icon>more_horiz</mat-icon></button>
   </div>
 </div>
+
+<mat-menu #shareMenu="matMenu" panelClass="share-menu" class="mat-typography share-menu">
+  <span class="share-description">
+    Diesen Pin teilen.
+  </span>
+
+  <div class="button-wrapper">
+    <button mat-flat-button class="icon-button">
+      <div>
+        <img src="/assets/icons/whatsapp.png" />
+        WhatsApp
+      </div>
+    </button>
+
+    <button mat-flat-button class="icon-button facebook">
+      <div>
+        <img src="/assets/icons/facebook.png" />
+        Facebook
+      </div>
+    </button>
+
+    <button mat-flat-button class="icon-button">
+      <div>
+        <img src="/assets/icons/twitter.png" />
+        Twitter
+      </div>
+    </button>
+
+    <button mat-flat-button class="icon-button">
+      <div>
+        <mat-icon>email_outline</mat-icon>
+        E-Mail
+      </div>
+    </button>
+
+    <button mat-flat-button class="icon-button">
+      <div>
+        <mat-icon>link_outline</mat-icon>
+        Link
+      </div>
+    </button>
+  </div>
+</mat-menu>
+
+<mat-menu #pinMenu="matMenu" class="mat-typography">
+  <div class="menu-description">
+    Dieser Pin wurde von <span class="topic-name">{{ topicName.toLowerCase() }}</span> inspiriert.
+  </div>
+  <mat-divider></mat-divider>
+  <button mat-menu-item>Pin ausblenden</button>
+  <button mat-menu-item>
+    Weniger Pins von <span class="topic-name">{{ topicName.toLowerCase() }}</span> anzeigen
+  </button>
+  <a mat-menu-item href="{{ imageUrl }}" download>Bild herunterladen</a>
+  <button mat-menu-item>Pin melden</button>
+</mat-menu>
