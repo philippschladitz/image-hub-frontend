@@ -12,4 +12,22 @@ export class PinService {
       headers: this.apiService.headers
     });
   }
+
+  blacklist(pinId: string) {
+    return this.httpClient.post(
+      `${this.apiService.apiURL}/pins/blacklist`,
+      {
+        pinId
+      },
+      {
+        headers: this.apiService.headers
+      }
+    );
+  }
+
+  revertBlacklist(pinId: string) {
+    return this.httpClient.delete(`${this.apiService.apiURL}/pins/blacklist/${pinId}`, {
+      headers: this.apiService.headers
+    });
+  }
 }

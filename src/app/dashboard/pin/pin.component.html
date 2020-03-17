@@ -1,15 +1,23 @@
-<img src="{{ imageUrl }}" />
-<div class="overlay">
+<img [ngClass]="{ blur: blur }" src="{{ imageUrl }}" />
+<div class="overlay" [ngClass]="{ revert: pinAskBlackListReason }">
   <div class="background"></div>
-  <button class="remember-button" mat-flat-button color="primary">Merken</button>
-  <div class="action-button-wrapper">
-    <a mat-flat-button href="{{ pin.link }}" target="_blank">
-      <mat-icon>arrow_forward</mat-icon>
-      {{ url }}
-    </a>
-    <button mat-icon-button [matMenuTriggerFor]="shareMenu"><mat-icon>share</mat-icon></button>
-    <button mat-icon-button [matMenuTriggerFor]="pinMenu"><mat-icon>more_horiz</mat-icon></button>
-  </div>
+  <ng-container *ngIf="!pinAskBlackListReason; else revertBlacklistBlock">
+    <button class="remember-button" mat-flat-button color="primary">Merken</button>
+    <div class="action-button-wrapper">
+      <a mat-flat-button href="{{ pin.link }}" target="_blank">
+        <mat-icon>arrow_forward</mat-icon>
+        {{ url }}
+      </a>
+      <button mat-icon-button [matMenuTriggerFor]="shareMenu"><mat-icon>share</mat-icon></button>
+      <button mat-icon-button [matMenuTriggerFor]="pinMenu"><mat-icon>more_horiz</mat-icon></button>
+    </div>
+  </ng-container>
+  <ng-template #revertBlacklistBlock>
+    <span>Alles klar! Wir zeigen dir diesen Pin künftig nicht mehr. <b>Homefeed anpassen</b></span>
+    <div class="revert-button">
+      <button mat-flat-button (click)="revertBlacklist()">Rückgängig machen</button>
+    </div>
+  </ng-template>
 </div>
 
 <mat-menu #shareMenu="matMenu" panelClass="share-menu" class="mat-typography share-menu">
@@ -56,14 +64,26 @@
 </mat-menu>
 
 <mat-menu #pinMenu="matMenu" class="mat-typography">
-  <div class="menu-description">
-    Dieser Pin wurde von <span class="topic-name">{{ topicName.toLowerCase() }}</span> inspiriert.
-  </div>
-  <mat-divider></mat-divider>
-  <button mat-menu-item>Pin ausblenden</button>
-  <button mat-menu-item>
-    Weniger Pins von <span class="topic-name">{{ topicName.toLowerCase() }}</span> anzeigen
-  </button>
-  <a mat-menu-item href="{{ imageUrl }}" download>Bild herunterladen</a>
-  <button mat-menu-item>Pin melden</button>
+  <ng-container *ngIf="!pinAskBlackListReason; else blacklistMenu">
+    <div class="menu-description">
+      Dieser Pin wurde von <span class="topic-name">{{ topicName.toLowerCase() }}</span> inspiriert.
+    </div>
+    <mat-divider></mat-divider>
+    <button mat-menu-item (click)="blacklist($event)">Pin ausblenden</button>
+    <button mat-menu-item>
+      Weniger Pins von <span class="topic-name">{{ topicName.toLowerCase() }}</span> anzeigen
+    </button>
+    <a mat-menu-item href="{{ imageUrl }}" download>Bild herunterladen</a>
+    <button mat-menu-item>Pin melden</button>
+  </ng-container>
+  <ng-template #blacklistMenu>
+    <div class="menu-description">
+      Hast du kurz Zeit? Sag uns, warum.
+    </div>
+    <button mat-menu-item class="lower-font-sizer">Nicht relevant für mich</button>
+    <button mat-menu-item>Nicht in einer Sprache, die ich verstehe</button>
+    <button mat-menu-item>Pin zu oft gesehen</button>
+    <button mat-menu-item>Verschwommenes oder pixeliges Bild</button>
+    <button mat-menu-item>Sonstiges</button>
+  </ng-template>
 </mat-menu>

@@ -1,5 +1,5 @@
-import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
-import { Pin } from '@app/shared';
+import { Component, ChangeDetectionStrategy, Input, ChangeDetectorRef, HostBinding } from '@angular/core';
+import { Pin, PinService } from '@app/shared';
 
 @Component({
   selector: 'app-pin',
@@ -9,6 +9,9 @@ import { Pin } from '@app/shared';
 })
 export class PinComponent {
   @Input() pin: Pin;
+
+  pinAskBlackListReason = false;
+  blur = false;
 
   get imageUrl() {
     return this.pin.image;
@@ -20,5 +23,34 @@ export class PinComponent {
 
   get topicName() {
     return this.pin.topic;
+  }
+
+  constructor(private readonly pinService: PinService, private readonly changeDetectoRef: ChangeDetectorRef) {}
+
+  blacklist(event: Event) {
+    event.stopPropagation();
+    this.pinService.blacklist(this.pin.id).subscribe(
+      result => {
+        this.pinAskBlackListReason = true;
+        this.blur = true;
+        this.changeDetectoRef.markForCheck();
+      },
+      err => {
+        console.error(err);
+      }
+    );
+  }
+
+  revertBlacklist() {
+    this.pinService.revertBlacklist(this.pin.id).subscribe(
+      result => {
+        this.pinAskBlackListReason = false;
+        this.blur = false;
+        this.changeDetectoRef.markForCheck();
+      },
+      err => {
+        console.error(err);
+      }
+    );
   }
 }
