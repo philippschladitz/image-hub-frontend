@@ -1,5 +1,6 @@
 import { Component, ChangeDetectionStrategy, Input, ChangeDetectorRef, HostBinding } from '@angular/core';
 import { Pin, PinService } from '@app/shared';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pin',
@@ -25,7 +26,11 @@ export class PinComponent {
     return this.pin.topic;
   }
 
-  constructor(private readonly pinService: PinService, private readonly changeDetectoRef: ChangeDetectorRef) {}
+  constructor(
+    private readonly pinService: PinService,
+    private readonly changeDetectoRef: ChangeDetectorRef,
+    private readonly router: Router
+  ) {}
 
   blacklist(event: Event) {
     event.stopPropagation();
@@ -52,5 +57,9 @@ export class PinComponent {
         console.error(err);
       }
     );
+  }
+
+  goToPinDetailsPage() {
+    this.router.navigateByUrl(`dashboard/pin-details/${this.pin.id}`);
   }
 }

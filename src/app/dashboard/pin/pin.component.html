@@ -1,6 +1,6 @@
 <img [ngClass]="{ blur: blur }" src="{{ imageUrl }}" />
 <div class="overlay" [ngClass]="{ revert: pinAskBlackListReason }">
-  <div class="background"></div>
+  <div class="background" (click)="goToPinDetailsPage()"></div>
   <ng-container *ngIf="!pinAskBlackListReason; else revertBlacklistBlock">
     <button class="remember-button" mat-flat-button color="primary">Merken</button>
     <div class="action-button-wrapper">

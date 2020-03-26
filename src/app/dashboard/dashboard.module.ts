@@ -6,6 +6,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
 
 import { SharedModule, StepsService, PinService } from '@app/shared';
 
@@ -15,10 +17,17 @@ import { BannerComponent } from './banner/banner.component';
 import { TopicsBannerComponent } from './topics-banner/topics-banner.component';
 import { PinOverviewComponent } from './pin-overview/pin-overview.component';
 import { PinComponent } from './pin/pin.component';
-import { MatDividerModule } from '@angular/material/divider';
+import { PinDetailsComponent } from './pin-details/pin-details.component';
 
 @NgModule({
-  declarations: [DashboardComponent, BannerComponent, TopicsBannerComponent, PinOverviewComponent, PinComponent],
+  declarations: [
+    DashboardComponent,
+    BannerComponent,
+    TopicsBannerComponent,
+    PinOverviewComponent,
+    PinComponent,
+    PinDetailsComponent
+  ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
@@ -28,7 +37,8 @@ import { MatDividerModule } from '@angular/material/divider';
     MatDialogModule,
     MatGridListModule,
     MatMenuModule,
-    MatDividerModule
+    MatDividerModule,
+    MatCardModule
   ],
   providers: [StepsService, PinService]
 })
