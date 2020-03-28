@@ -2,7 +2,7 @@
 <div class="overlay" [ngClass]="{ revert: pinAskBlackListReason }">
   <div class="background" (click)="goToPinDetailsPage()"></div>
   <ng-container *ngIf="!pinAskBlackListReason; else revertBlacklistBlock">
-    <button class="remember-button" mat-flat-button color="primary">Merken</button>
+    <button class="remember-button" mat-flat-button color="warn">Merken</button>
     <div class="action-button-wrapper">
       <a mat-flat-button href="{{ pin.link }}" target="_blank">
         <mat-icon>arrow_forward</mat-icon>

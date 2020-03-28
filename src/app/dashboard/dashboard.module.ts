@@ -8,8 +8,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatInputModule } from '@angular/material/input';
 
-import { SharedModule, StepsService, PinService } from '@app/shared';
+import { SharedModule, StepsService, PinService, PinResolver } from '@app/shared';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -38,8 +40,10 @@ import { PinDetailsComponent } from './pin-details/pin-details.component';
     MatGridListModule,
     MatMenuModule,
     MatDividerModule,
-    MatCardModule
+    MatCardModule,
+    MatTabsModule,
+    MatInputModule
   ],
-  providers: [StepsService, PinService]
+  providers: [StepsService, PinService, PinResolver]
 })
 export class DashboardModule {}

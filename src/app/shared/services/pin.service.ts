@@ -13,6 +13,12 @@ export class PinService {
     });
   }
 
+  getPin(pinId: string) {
+    return this.httpClient.get<Pin>(`${this.apiService.apiURL}/pins/${pinId}`, {
+      headers: this.apiService.headers
+    });
+  }
+
   blacklist(pinId: string) {
     return this.httpClient.post(
       `${this.apiService.apiURL}/pins/blacklist`,
