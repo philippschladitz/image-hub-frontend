@@ -1,0 +1,69 @@
+<app-toolbar></app-toolbar>
+
+<div class="details-container">
+  <button mat-icon-button class="back-button" routerLink="../../">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+
+  <div class="pin-details-card">
+    <mat-card>
+      <img src="{{ imageUrl }}" />
+      <div>
+        <div class="button-container">
+          <div>
+            <button mat-icon-button><mat-icon>share</mat-icon></button>
+            <button mat-icon-button><mat-icon>more_horiz</mat-icon></button>
+          </div>
+          <button class="remember-button" mat-flat-button color="warn">Merken</button>
+        </div>
+
+        <div class="pin-content">
+          <a mat-flat-button class="underline" href="{{ link }}" target="_blank">
+            {{ url }}
+          </a>
+
+          <h1>{{ title }}</h1>
+          <span>{{ description }}</span>
+
+          <mat-tab-group class="tabs">
+            <mat-tab label="Fotos">
+              <div class="photo-tab">
+                <span>Hast du diesen Pin ausprobiert? Füg ein Foto hinzu, um zu zeigen, wie es gelaufen ist. </span>
+                <button mat-flat-button>Foto hinzufügen</button>
+              </div>
+            </mat-tab>
+            <mat-tab label="Kommentare">
+              <div class="comments-tab">
+                <span *ngIf="!comments || comments.length === 0; else commentsBlock"
+                  >Gib Feedback, stelle eine Frage oder gib einen Daumen hoch.</span
+                >
+                <ng-template #commentsBlock>
+                  <ng-container *ngFor="let comment of comments">
+                    <mat-form-field appearance="outline">
+                      <mat-label>{{ comment.userName }}</mat-label>
+                      <mat-icon matPrefix>account_circle</mat-icon>
+                      <input matInput [readonly]="true" [value]="comment.comment" />
+                    </mat-form-field>
+                  </ng-container>
+                </ng-template>
+                <form [formGroup]="commentsForm">
+                  <mat-form-field appearance="outline" (click)="enableCommentsCta()">
+                    <mat-label>Kommentar hinzufügen</mat-label>
+                    <mat-icon matPrefix>account_circle</mat-icon>
+                    <input matInput formControlName="comment" />
+                  </mat-form-field>
+                  <div class="cta-wrapper" *ngIf="isCommentsCtaEnabled">
+                    <button mat-raised-button (click)="disableCommentsCta()">Abbrechen</button>
+                    <button mat-raised-button color="primary" [disabled]="!commentsForm.valid" (click)="postComment()">
+                      Fertig
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</div>

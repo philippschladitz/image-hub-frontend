@@ -1,0 +1,90 @@
+.back-button {
+  justify-self: end;
+}
+
+.pin-details-card {
+  display: flex;
+  justify-content: center;
+
+  mat-card {
+    max-width: 1016px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 8px;
+
+    img {
+      width: 100%;
+      border-radius: 5%;
+    }
+  }
+
+  .button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .pin-content {
+    padding-left: 8px;
+
+    h1 {
+      font-weight: bold;
+    }
+
+    .tabs {
+      margin-top: 16px;
+
+      .photo-tab {
+        margin-top: 12px;
+        display: flex;
+
+        span {
+          flex: 2;
+        }
+
+        button {
+          flex: 1;
+        }
+      }
+
+      .comments-tab {
+        margin-top: 12px;
+
+        span {
+          display: inline-block;
+          margin-bottom: 8px;
+        }
+
+        .mat-form-field {
+          width: 100%;
+        }
+
+        mat-icon {
+          color: gray;
+        }
+      }
+    }
+  }
+}
+
+.details-container {
+  display: grid;
+  grid-template-columns: 48px 1fr 48px;
+  margin-top: 8px;
+}
+
+.underline {
+  text-decoration: underline;
+  padding: 0;
+}
+
+.cta-wrapper {
+  display: flex;
+  margin: 8px;
+  justify-content: flex-end;
+
+  button {
+    margin-left: 10px;
+  }
+}

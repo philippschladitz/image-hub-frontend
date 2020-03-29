@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -42,7 +43,9 @@ import { PinDetailsComponent } from './pin-details/pin-details.component';
     MatDividerModule,
     MatCardModule,
     MatTabsModule,
-    MatInputModule
+    MatInputModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [StepsService, PinService, PinResolver]
 })

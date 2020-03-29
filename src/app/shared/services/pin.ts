@@ -7,6 +7,8 @@ export interface Pin {
   image: string;
   comments: Array<{
     comment: string;
+    createdAt: Date;
     userId: string;
+    userName: string;
   }>;
 }

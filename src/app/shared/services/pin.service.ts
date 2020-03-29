@@ -36,4 +36,16 @@ export class PinService {
       headers: this.apiService.headers
     });
   }
+
+  postComment(pinId: string, comment: string) {
+    return this.httpClient.post<Pin>(
+      `${this.apiService.apiURL}/pins/comment/${pinId}`,
+      {
+        comment
+      },
+      {
+        headers: this.apiService.headers
+      }
+    );
+  }
 }
