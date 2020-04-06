@@ -21,6 +21,7 @@ import { TopicsBannerComponent } from './topics-banner/topics-banner.component';
 import { PinOverviewComponent } from './pin-overview/pin-overview.component';
 import { PinComponent } from './pin/pin.component';
 import { PinDetailsComponent } from './pin-details/pin-details.component';
+import { UploadPhotoDialogComponent } from './upload-photo-dialog/upload-photo-dialog.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { PinDetailsComponent } from './pin-details/pin-details.component';
     TopicsBannerComponent,
     PinOverviewComponent,
     PinComponent,
-    PinDetailsComponent
+    PinDetailsComponent,
+    UploadPhotoDialogComponent
   ],
   imports: [
     CommonModule,

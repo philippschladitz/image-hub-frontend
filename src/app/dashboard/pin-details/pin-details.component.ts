@@ -2,6 +2,8 @@ import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@
 import { ActivatedRoute } from '@angular/router';
 import { Pin, PinService } from '@app/shared';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { UploadPhotoDialogComponent } from '../upload-photo-dialog/upload-photo-dialog.component';
 
 @Component({
   selector: 'app-pin-details',
@@ -43,7 +45,8 @@ export class PinDetailsComponent implements OnInit {
     private readonly activatedRoute: ActivatedRoute,
     private readonly formBuilder: FormBuilder,
     private readonly changeDetectorRef: ChangeDetectorRef,
-    private readonly pinService: PinService
+    private readonly pinService: PinService,
+    private readonly matDialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -91,5 +94,17 @@ export class PinDetailsComponent implements OnInit {
         error => {}
       );
     }
+  }
+
+  openUploadPhotoDialog() {
+    this.matDialog
+      .open(UploadPhotoDialogComponent, {
+        data: {
+          pinId: this.pin.id,
+          title: this.title
+        }
+      })
+      .afterClosed()
+      .subscribe(result => {});
   }
 }

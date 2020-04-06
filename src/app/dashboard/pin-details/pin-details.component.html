@@ -14,7 +14,7 @@
             <button mat-icon-button><mat-icon>share</mat-icon></button>
             <button mat-icon-button><mat-icon>more_horiz</mat-icon></button>
           </div>
-          <button class="remember-button" mat-flat-button color="warn">Merken</button>
+          <button class="remember-button" mat-flat-button color="primary">Merken</button>
         </div>
 
         <div class="pin-content">
@@ -29,7 +29,7 @@
             <mat-tab label="Fotos">
               <div class="photo-tab">
                 <span>Hast du diesen Pin ausprobiert? Füg ein Foto hinzu, um zu zeigen, wie es gelaufen ist. </span>
-                <button mat-flat-button>Foto hinzufügen</button>
+                <button mat-flat-button (click)="openUploadPhotoDialog()">Foto hinzufügen</button>
               </div>
             </mat-tab>
             <mat-tab label="Kommentare">

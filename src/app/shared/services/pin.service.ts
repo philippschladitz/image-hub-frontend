@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { APIService } from '@app/core';
 import { Pin } from './pin';
+import { PinPhoto } from './pin-photo';
 
 @Injectable()
 export class PinService {
@@ -47,5 +48,15 @@ export class PinService {
         headers: this.apiService.headers
       }
     );
+  }
+
+  uploadPhoto(pinId: string, file: File, comment: string) {
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('comment', comment);
+
+    return this.httpClient.post<PinPhoto>(`${this.apiService.apiURL}/pins/photo/${pinId}`, formData, {
+      headers: this.apiService.headers
+    });
   }
 }
