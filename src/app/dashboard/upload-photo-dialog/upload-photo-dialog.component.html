@@ -1,0 +1,25 @@
+<div class="mat-typography">
+  <h2>Füge ein Foto von {{ title }} hinzu</h2>
+
+  <div class="upload-container" (click)="fileInput.click()" *ngIf="!file; else imageBlock">
+    <mat-icon>add_a_photo</mat-icon>
+    <span>Bild hierhin ziehen oder klicken, um es hochzuladen.</span>
+    <input type="file" #fileInput [ngModel]="file" (ngModelChange)="fileSelected(fileInput.files[0])" />
+  </div>
+
+  <ng-template #imageBlock>
+    <div class="image-container">
+      <img [src]="safeFileObjectUrl" />
+    </div>
+  </ng-template>
+
+  <mat-form-field appearance="outline" class="comment" *ngIf="isCommentEnabled">
+    <mat-label>Einen Hinweis oder Tipp hinzufügen</mat-label>
+    <input matInput [(ngModel)]="comment" />
+  </mat-form-field>
+
+  <div class="button-container">
+    <button mat-raised-button (click)="close()">Abbrechen</button>
+    <button mat-raised-button [disabled]="isDisabled" color="primary" (click)="uploadPhoto()">Fertig</button>
+  </div>
+</div>

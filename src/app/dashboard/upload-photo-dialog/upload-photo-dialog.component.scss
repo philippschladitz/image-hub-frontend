@@ -1,0 +1,55 @@
+.upload-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 366px;
+  height: 366px;
+  border-radius: 10px;
+  border: 2px dashed rgb(142, 142, 142);
+  cursor: pointer;
+
+  input {
+    display: none;
+  }
+}
+
+.image-container {
+  width: 366px;
+  height: 366px;
+  border-radius: 10px;
+  border: 2px dashed rgb(142, 142, 142);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+mat-icon {
+  font-size: 32px;
+  width: 32px;
+  height: 32px;
+}
+
+span {
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+
+  > button:first-child {
+    margin-right: 4px;
+  }
+}
+
+.comment {
+  width: 100%;
+  margin-top: 8px;
+}

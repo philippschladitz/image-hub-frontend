@@ -36,8 +36,30 @@ export class PinDetailsComponent implements OnInit {
     return this.pin.comments;
   }
 
+  get commentsTabLabel() {
+    return this.comments && this.comments.length > 0 ? `${this.comments.length} Kommentare` : 'Kommentare';
+  }
+
+  get photos() {
+    return this.pin.photos;
+  }
+
+  get fourPhotos() {
+    const sliced = this.pin.photos.slice(this.photosStartIndex, this.photosStartIndex + 4);
+    if (sliced.length < 4) {
+      const emptyPhotos = new Array(4 - sliced.length).fill(null);
+      return sliced.concat(emptyPhotos);
+    }
+    return sliced;
+  }
+
+  get photosTabLabel() {
+    return this.photos && this.photos.length > 0 ? `${this.photos.length} Fotos` : 'Fotos';
+  }
+
   commentsForm: FormGroup;
   isCommentsCtaEnabled = false;
+  photosStartIndex = 0;
 
   private pin: Pin;
 
@@ -69,6 +91,30 @@ export class PinDetailsComponent implements OnInit {
   enableCommentsCta() {
     this.isCommentsCtaEnabled = true;
     this.changeDetectorRef.markForCheck();
+  }
+
+  previousPhoto() {
+    this.photosStartIndex--;
+
+    if (this.photosStartIndex < 0) {
+      this.photosStartIndex = this.photos.length - 1;
+    }
+
+    this.changeDetectorRef.markForCheck();
+  }
+
+  nextPhoto() {
+    this.photosStartIndex++;
+
+    if (this.photosStartIndex >= this.photos.length) {
+      this.photosStartIndex = 0;
+    }
+
+    this.changeDetectorRef.markForCheck();
+  }
+
+  transformPhoto(base64: string) {
+    return `data:image/png;base64,${base64}`;
   }
 
   postComment() {
@@ -105,6 +151,9 @@ export class PinDetailsComponent implements OnInit {
         }
       })
       .afterClosed()
-      .subscribe(result => {});
+      .subscribe((result: Pin) => {
+        this.pin = result;
+        this.changeDetectorRef.markForCheck();
+      });
   }
 }

@@ -11,4 +11,10 @@ export interface Pin {
     userId: string;
     userName: string;
   }>;
+  photos: Array<{
+    base64: string;
+    comment: string;
+    userId: string;
+    userName: string;
+  }>;
 }

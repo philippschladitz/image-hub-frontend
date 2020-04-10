@@ -26,13 +26,29 @@
           <span>{{ description }}</span>
 
           <mat-tab-group class="tabs">
-            <mat-tab label="Fotos">
+            <mat-tab [label]="photosTabLabel">
+              <div class="photo-container" *ngIf="photos && photos.length > 0">
+                <button mat-icon-button *ngIf="photos.length > 4" (click)="previousPhoto()">
+                  <mat-icon>chevron_left</mat-icon>
+                </button>
+                <div *ngFor="let photo of fourPhotos" class="photo">
+                  <ng-container *ngIf="photo; else emptyDivBlock">
+                    <img src="{{ transformPhoto(photo.base64) }}" />
+                  </ng-container>
+                  <ng-template #emptyDivBlock>
+                    <div></div>
+                  </ng-template>
+                </div>
+                <button mat-icon-button *ngIf="photos.length > 4" (click)="nextPhoto()">
+                  <mat-icon>chevron_right</mat-icon>
+                </button>
+              </div>
               <div class="photo-tab">
                 <span>Hast du diesen Pin ausprobiert? Füg ein Foto hinzu, um zu zeigen, wie es gelaufen ist. </span>
                 <button mat-flat-button (click)="openUploadPhotoDialog()">Foto hinzufügen</button>
               </div>
             </mat-tab>
-            <mat-tab label="Kommentare">
+            <mat-tab [label]="commentsTabLabel">
               <div class="comments-tab">
                 <span *ngIf="!comments || comments.length === 0; else commentsBlock"
                   >Gib Feedback, stelle eine Frage oder gib einen Daumen hoch.</span
