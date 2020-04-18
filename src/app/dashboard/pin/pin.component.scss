@@ -58,6 +58,7 @@ img {
 }
 
 .overlay:hover,
+.menu-open,
 .revert {
   .background {
     position: absolute;
@@ -89,59 +90,11 @@ img {
   }
 }
 
-.menu-description {
-  margin: 16px;
-}
-
-.topic-name {
-  font-weight: bold;
-  text-transform: capitalize;
+.hidden-trigger {
+  justify-self: flex-end;
+  visibility: hidden;
 }
 
 .mat-menu-item {
   font-weight: bold;
-}
-
-.button-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 15px 0;
-
-  .icon-button {
-    div {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    img {
-      width: 48px;
-      height: 48px;
-      object-fit: contain;
-    }
-
-    .mat-icon {
-      width: 36px;
-      height: 36px;
-      font-size: 36px;
-    }
-  }
-
-  .facebook {
-    img {
-      width: 36px;
-      height: 36px;
-      margin-top: 6px;
-      margin-bottom: 6px;
-    }
-  }
-}
-
-.share-description {
-  padding: 12px;
-}
-
-.lower-font-size {
-  font-size: 12px;
 }

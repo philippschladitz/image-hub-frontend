@@ -22,6 +22,8 @@ import { PinOverviewComponent } from './pin-overview/pin-overview.component';
 import { PinComponent } from './pin/pin.component';
 import { PinDetailsComponent } from './pin-details/pin-details.component';
 import { UploadPhotoDialogComponent } from './upload-photo-dialog/upload-photo-dialog.component';
+import { ShareMenuComponent } from './share-menu/share-menu.component';
+import { PinMenuComponent } from './pin-menu/pin-menu.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { UploadPhotoDialogComponent } from './upload-photo-dialog/upload-photo-d
     PinOverviewComponent,
     PinComponent,
     PinDetailsComponent,
-    UploadPhotoDialogComponent
+    UploadPhotoDialogComponent,
+    ShareMenuComponent,
+    PinMenuComponent
   ],
   imports: [
     CommonModule,

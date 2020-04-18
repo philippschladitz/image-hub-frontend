@@ -11,8 +11,8 @@
       <div>
         <div class="button-container">
           <div>
-            <button mat-icon-button><mat-icon>share</mat-icon></button>
-            <button mat-icon-button><mat-icon>more_horiz</mat-icon></button>
+            <button mat-icon-button [matMenuTriggerFor]="shareMenu"><mat-icon>share</mat-icon></button>
+            <button mat-icon-button [matMenuTriggerFor]="pinMenu"><mat-icon>more_horiz</mat-icon></button>
           </div>
           <button class="remember-button" mat-flat-button color="primary">Merken</button>
         </div>
@@ -83,3 +83,16 @@
     </mat-card>
   </div>
 </div>
+
+<mat-menu #shareMenu="matMenu" panelClass="share-menu" class="mat-typography share-menu">
+  <app-share-menu></app-share-menu>
+</mat-menu>
+
+<mat-menu #pinMenu="matMenu" class="mat-typography">
+  <app-pin-menu
+    [pinAskBlackListReason]="pinAskBlackListReason"
+    [topicName]="topicName"
+    [imageUrl]="[imageUrl]"
+    [showBlacklistOption]="false"
+  ></app-pin-menu>
+</mat-menu>

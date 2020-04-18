@@ -1,0 +1,39 @@
+.share-description {
+  padding: 12px;
+}
+
+.button-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 15px 0;
+
+  .icon-button {
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    img {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+    }
+
+    .mat-icon {
+      width: 36px;
+      height: 36px;
+      font-size: 36px;
+    }
+  }
+
+  .facebook {
+    img {
+      width: 36px;
+      height: 36px;
+      margin-top: 6px;
+      margin-bottom: 6px;
+    }
+  }
+}

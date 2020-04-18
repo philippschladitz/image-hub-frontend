@@ -1,0 +1,24 @@
+<ng-container *ngIf="!pinAskBlackListReason; else blacklistMenu">
+  <div class="menu-description" *ngIf="showBlacklistOption">
+    Dieser Pin wurde von <span class="topic-name">{{ topicName.toLowerCase() }}</span> inspiriert.
+  </div>
+  <mat-divider *ngIf="showBlacklistOption"></mat-divider>
+  <button mat-menu-item (click)="blacklistAndStopPropagation($event)" *ngIf="showBlacklistOption">
+    Pin ausblenden
+  </button>
+  <button mat-menu-item *ngIf="showBlacklistOption">
+    Weniger Pins von <span class="topic-name">{{ topicName.toLowerCase() }}</span> anzeigen
+  </button>
+  <a mat-menu-item href="{{ imageUrl }}" download>Bild herunterladen</a>
+  <button mat-menu-item>Pin melden</button>
+</ng-container>
+<ng-template #blacklistMenu>
+  <div class="menu-description">
+    Hast du kurz Zeit? Sag uns, warum.
+  </div>
+  <button mat-menu-item>Nicht relevant für mich</button>
+  <button mat-menu-item>Nicht in einer Sprache, die ich verstehe</button>
+  <button mat-menu-item>Pin zu oft gesehen</button>
+  <button mat-menu-item>Verschwommenes oder pixeliges Bild</button>
+  <button mat-menu-item>Sonstiges</button>
+</ng-template>

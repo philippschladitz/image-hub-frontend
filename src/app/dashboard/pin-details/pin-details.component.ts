@@ -44,6 +44,10 @@ export class PinDetailsComponent implements OnInit {
     return this.pin.photos;
   }
 
+  get topicName() {
+    return this.pin.topic;
+  }
+
   get fourPhotos() {
     const sliced = this.pin.photos.slice(this.photosStartIndex, this.photosStartIndex + 4);
     if (sliced.length < 4) {
@@ -60,6 +64,7 @@ export class PinDetailsComponent implements OnInit {
   commentsForm: FormGroup;
   isCommentsCtaEnabled = false;
   photosStartIndex = 0;
+  pinAskBlackListReason = false;
 
   private pin: Pin;
 

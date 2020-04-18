@@ -1,5 +1,5 @@
 <img [ngClass]="{ blur: blur }" src="{{ imageUrl }}" />
-<div class="overlay" [ngClass]="{ revert: pinAskBlackListReason }">
+<div class="overlay" [ngClass]="{ revert: pinAskBlackListReason, 'menu-open': isMenuOpen }">
   <div class="background" (click)="goToPinDetailsPage()"></div>
   <ng-container *ngIf="!pinAskBlackListReason; else revertBlacklistBlock">
     <button class="remember-button" mat-flat-button color="primary">Merken</button>
@@ -8,12 +8,36 @@
         <mat-icon>arrow_forward</mat-icon>
         {{ url }}
       </a>
-      <button mat-icon-button [matMenuTriggerFor]="shareMenu"><mat-icon>share</mat-icon></button>
-      <button mat-icon-button [matMenuTriggerFor]="pinMenu"><mat-icon>more_horiz</mat-icon></button>
+      <button
+        mat-icon-button
+        #shareMenuTrigger
+        [matMenuTriggerFor]="shareMenu"
+        (menuClosed)="menuClosed()"
+        (menuOpened)="menuOpened()"
+      >
+        <mat-icon>share</mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        #pinMenuTrigger
+        [matMenuTriggerFor]="pinMenu"
+        (menuClosed)="menuClosed()"
+        (menuOpened)="menuOpened()"
+      >
+        <mat-icon>more_horiz</mat-icon>
+      </button>
     </div>
   </ng-container>
   <ng-template #revertBlacklistBlock>
     <span>Alles klar! Wir zeigen dir diesen Pin künftig nicht mehr. <b>Homefeed anpassen</b></span>
+    <div class="action-button-wrapper">
+      <button
+        mat-icon-button
+        class="hidden-trigger"
+        #pinMenuTriggerAfterBlacklist="matMenuTrigger"
+        [matMenuTriggerFor]="pinMenu"
+      ></button>
+    </div>
     <div class="revert-button">
       <button mat-flat-button (click)="revertBlacklist()">Rückgängig machen</button>
     </div>
@@ -21,69 +45,14 @@
 </div>
 
 <mat-menu #shareMenu="matMenu" panelClass="share-menu" class="mat-typography share-menu">
-  <span class="share-description">
-    Diesen Pin teilen.
-  </span>
-
-  <div class="button-wrapper">
-    <button mat-flat-button class="icon-button">
-      <div>
-        <img src="/assets/icons/whatsapp.png" />
-        WhatsApp
-      </div>
-    </button>
-
-    <button mat-flat-button class="icon-button facebook">
-      <div>
-        <img src="/assets/icons/facebook.png" />
-        Facebook
-      </div>
-    </button>
-
-    <button mat-flat-button class="icon-button">
-      <div>
-        <img src="/assets/icons/twitter.png" />
-        Twitter
-      </div>
-    </button>
-
-    <button mat-flat-button class="icon-button">
-      <div>
-        <mat-icon>email_outline</mat-icon>
-        E-Mail
-      </div>
-    </button>
-
-    <button mat-flat-button class="icon-button">
-      <div>
-        <mat-icon>link_outline</mat-icon>
-        Link
-      </div>
-    </button>
-  </div>
+  <app-share-menu></app-share-menu>
 </mat-menu>
 
 <mat-menu #pinMenu="matMenu" class="mat-typography">
-  <ng-container *ngIf="!pinAskBlackListReason; else blacklistMenu">
-    <div class="menu-description">
-      Dieser Pin wurde von <span class="topic-name">{{ topicName.toLowerCase() }}</span> inspiriert.
-    </div>
-    <mat-divider></mat-divider>
-    <button mat-menu-item (click)="blacklist($event)">Pin ausblenden</button>
-    <button mat-menu-item>
-      Weniger Pins von <span class="topic-name">{{ topicName.toLowerCase() }}</span> anzeigen
-    </button>
-    <a mat-menu-item href="{{ imageUrl }}" download>Bild herunterladen</a>
-    <button mat-menu-item>Pin melden</button>
-  </ng-container>
-  <ng-template #blacklistMenu>
-    <div class="menu-description">
-      Hast du kurz Zeit? Sag uns, warum.
-    </div>
-    <button mat-menu-item class="lower-font-sizer">Nicht relevant für mich</button>
-    <button mat-menu-item>Nicht in einer Sprache, die ich verstehe</button>
-    <button mat-menu-item>Pin zu oft gesehen</button>
-    <button mat-menu-item>Verschwommenes oder pixeliges Bild</button>
-    <button mat-menu-item>Sonstiges</button>
-  </ng-template>
+  <app-pin-menu
+    [pinAskBlackListReason]="pinAskBlackListReason"
+    [topicName]="topicName"
+    [imageUrl]="[imageUrl]"
+    (blacklist)="blacklist()"
+  ></app-pin-menu>
 </mat-menu>
