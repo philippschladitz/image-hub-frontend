@@ -8,9 +8,8 @@ describe('ShareMenuComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ShareMenuComponent ]
-    })
-    .compileComponents();
+      declarations: [ShareMenuComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
