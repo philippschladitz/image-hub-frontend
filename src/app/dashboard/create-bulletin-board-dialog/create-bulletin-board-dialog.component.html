@@ -1,0 +1,24 @@
+<div class="mat-typography">
+  <h1>Pinnwand erstellen</h1>
+  <div class="container">
+    <div class="image-wrapper">
+      <img [src]="imageUrl" />
+    </div>
+    <div class="bulletin-board-wrapper">
+      <div class="form-wrapper">
+        <mat-form-field appearance="outline">
+          <input [(ngModel)]="bulletinBoardName" matInput placeholder="Pinnwand benennen" />
+        </mat-form-field>
+        <button mat-flat-button color="primary" (click)="createBulletinBoard()">Erstellen</button>
+      </div>
+      <div class="list-wrapper">
+        <span>Namensvorschläge für Pinnwand</span>
+        <mat-action-list>
+          <button mat-list-item *ngFor="let nameSuggestion of nameSuggestions">
+            <mat-icon>add</mat-icon>{{ nameSuggestion }}
+          </button>
+        </mat-action-list>
+      </div>
+    </div>
+  </div>
+</div>

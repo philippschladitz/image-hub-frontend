@@ -1,7 +1,10 @@
 import { Component, ChangeDetectionStrategy, Input, ChangeDetectorRef, HostBinding, ViewChild } from '@angular/core';
 import { Pin, PinService } from '@app/shared';
 import { Router } from '@angular/router';
-import { MatMenu, MatMenuTrigger } from '@angular/material/menu';
+import { MatMenuTrigger } from '@angular/material/menu';
+import { MatDialog } from '@angular/material/dialog';
+import { CreateBulletinBoardDialogComponent } from '../create-bulletin-board-dialog/create-bulletin-board-dialog.component';
+import { CreateBulletinBoardDialogData } from '../create-bulletin-board-dialog/create-bulletin-board-dialog-data';
 
 @Component({
   selector: 'app-pin',
@@ -35,7 +38,8 @@ export class PinComponent {
   constructor(
     private readonly pinService: PinService,
     private readonly changeDetectoRef: ChangeDetectorRef,
-    private readonly router: Router
+    private readonly router: Router,
+    private readonly matDialog: MatDialog
   ) {}
 
   blacklist() {
@@ -79,5 +83,14 @@ export class PinComponent {
 
   goToPinDetailsPage() {
     this.router.navigateByUrl(`dashboard/pin-details/${this.pin.id}`);
+  }
+
+  openCreateBulletinBoardDialog() {
+    this.matDialog.open(CreateBulletinBoardDialogComponent, {
+      data: {
+        imageUrl: this.imageUrl
+      } as CreateBulletinBoardDialogData,
+      width: '900px'
+    });
   }
 }

@@ -11,8 +11,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material/list';
 
-import { SharedModule, StepsService, PinService, PinResolver } from '@app/shared';
+import { SharedModule, StepsService, PinService, PinResolver, BulletinBoardService } from '@app/shared';
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -24,6 +25,7 @@ import { PinDetailsComponent } from './pin-details/pin-details.component';
 import { UploadPhotoDialogComponent } from './upload-photo-dialog/upload-photo-dialog.component';
 import { ShareMenuComponent } from './share-menu/share-menu.component';
 import { PinMenuComponent } from './pin-menu/pin-menu.component';
+import { CreateBulletinBoardDialogComponent } from './create-bulletin-board-dialog/create-bulletin-board-dialog.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,8 @@ import { PinMenuComponent } from './pin-menu/pin-menu.component';
     PinDetailsComponent,
     UploadPhotoDialogComponent,
     ShareMenuComponent,
-    PinMenuComponent
+    PinMenuComponent,
+    CreateBulletinBoardDialogComponent
   ],
   imports: [
     CommonModule,
@@ -50,9 +53,10 @@ import { PinMenuComponent } from './pin-menu/pin-menu.component';
     MatCardModule,
     MatTabsModule,
     MatInputModule,
+    MatListModule,
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [StepsService, PinService, PinResolver]
+  providers: [StepsService, PinService, PinResolver, BulletinBoardService]
 })
 export class DashboardModule {}
