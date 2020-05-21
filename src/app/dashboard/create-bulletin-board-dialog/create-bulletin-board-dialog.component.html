@@ -1,10 +1,10 @@
 <div class="mat-typography">
-  <h1>Pinnwand erstellen</h1>
+  <h1 [ngClass]="{ hide: showAnimation }">Pinnwand erstellen</h1>
   <div class="container">
-    <div class="image-wrapper">
+    <div class="image-wrapper" [ngClass]="{ 'move-image': showAnimation }">
       <img [src]="imageUrl" />
     </div>
-    <div class="bulletin-board-wrapper">
+    <div class="bulletin-board-wrapper" [ngClass]="{ hide: showAnimation }">
       <div class="form-wrapper">
         <mat-form-field appearance="outline">
           <input [(ngModel)]="bulletinBoardName" matInput placeholder="Pinnwand benennen" />
@@ -21,4 +21,7 @@
       </div>
     </div>
   </div>
+  <h1 class="subtitle" [ngClass]="{ hidden: !showAnimation }">
+    Du hast dir den Pin auf "{{ bulletinBoardName }}" gemerkt.
+  </h1>
 </div>

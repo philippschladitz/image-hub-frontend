@@ -8,9 +8,8 @@ describe('CreateBulletinBoardDialogComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CreateBulletinBoardDialogComponent ]
-    })
-    .compileComponents();
+      declarations: [CreateBulletinBoardDialogComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

@@ -40,3 +40,50 @@ h1 {
   padding-top: 10px;
   border-top: 1px solid lightgray;
 }
+
+.hide {
+  opacity: 0;
+  animation: fadeOut 0.5s ease-out;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.move-image {
+  transform: translateX(calc(50%));
+  animation: moveToCenter 0.5s ease-out;
+}
+
+@keyframes moveToCenter {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(50%));
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.subtitle {
+  text-align: center;
+  opacity: 1;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
