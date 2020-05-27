@@ -1,3 +1,4 @@
+export * from './bulletin-board';
 export * from './bulletin-board.service';
 export * from './pin.service';
 export * from './pin';

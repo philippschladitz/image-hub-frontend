@@ -3,7 +3,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 import { CreateBulletinBoardDialogData } from './create-bulletin-board-dialog-data';
 import { BulletinBoardService } from '@app/shared';
-import { tap, debounceTime, delay } from 'rxjs/operators';
+import { tap, delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-create-bulletin-board-dialog',
@@ -16,12 +16,14 @@ export class CreateBulletinBoardDialogComponent {
     return this.data.imageUrl;
   }
 
+  get bulletinBoards() {
+    return this.data.bulletinBoards;
+  }
+
   get isBoardNameValid() {
     return this.bulletinBoardName && this.bulletinBoardName !== '';
   }
 
-  // Todo: show existing bulletin boards if there any
-  existingBulletinBoards: [string];
   bulletinBoardName: string;
   nameSuggestions = ['Vorschlag 1', 'Vorschlag 2', 'Vorschlag 3'];
   showAnimation = false;
@@ -32,6 +34,8 @@ export class CreateBulletinBoardDialogComponent {
     private readonly changeDetectorRef: ChangeDetectorRef,
     private readonly matDialogRef: MatDialogRef<CreateBulletinBoardDialogComponent>
   ) {}
+
+  addToBulletinBoard(id: string) {}
 
   createBulletinBoard() {
     if (this.isBoardNameValid) {

@@ -1,16 +1,40 @@
 <div class="mat-typography">
-  <h1 [ngClass]="{ hide: showAnimation }">Pinnwand erstellen</h1>
+  <h1 [ngClass]="{ hide: showAnimation }">
+    Pinnwand {{ bulletinBoards && bulletinBoards.length > 0 ? 'auswählen' : 'erstellen' }}
+  </h1>
   <div class="container">
     <div class="image-wrapper" [ngClass]="{ 'move-image': showAnimation }">
       <img [src]="imageUrl" />
     </div>
     <div class="bulletin-board-wrapper" [ngClass]="{ hide: showAnimation }">
-      <div class="form-wrapper">
+      <div class="form-wrapper" *ngIf="!bulletinBoards || bulletinBoards.length === 0; else bulletinBoardsList">
+        <ng-container *ngTemplateOutlet="createBulletinBoardBlock"></ng-container>
+      </div>
+      <ng-template #bulletinBoardsList>
+        <mat-action-list>
+          <ng-container *ngFor="let bulletinBoard of bulletinBoards">
+            <button mat-list-item class="bulletin-board-hover" (click)="addToBulletinBoard(bulletinBoard.id)">
+              <div class="bulletin-board-button">
+                <span>{{ bulletinBoard.name }}</span>
+                <div class="notice">
+                  <img class="logo" src="assets/icons/logo.png" />
+                  <span>Merken</span>
+                </div>
+              </div>
+            </button>
+            <mat-divider></mat-divider>
+          </ng-container>
+          <div class="create-bulletin-board">
+            <ng-container *ngTemplateOutlet="createBulletinBoardBlock"></ng-container>
+          </div>
+        </mat-action-list>
+      </ng-template>
+      <ng-template #createBulletinBoardBlock>
         <mat-form-field appearance="outline">
           <input [(ngModel)]="bulletinBoardName" matInput placeholder="Pinnwand benennen" />
         </mat-form-field>
         <button mat-flat-button color="primary" (click)="createBulletinBoard()">Erstellen</button>
-      </div>
+      </ng-template>
       <div class="list-wrapper">
         <span>Namensvorschläge für Pinnwand</span>
         <mat-action-list>

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { APIService } from '@app/core';
 import { Pin } from './pin';
+import { BulletinBoard } from './bulletin-board';
 
 @Injectable()
 export class BulletinBoardService {
@@ -20,7 +21,7 @@ export class BulletinBoardService {
   }
 
   getAll() {
-    return this.httpClient.get(`${this.apiService.apiURL}/bulletin-boards`, {
+    return this.httpClient.get<BulletinBoard[]>(`${this.apiService.apiURL}/bulletin-boards`, {
       headers: this.apiService.headers
     });
   }

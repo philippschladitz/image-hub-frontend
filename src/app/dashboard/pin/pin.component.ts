@@ -1,10 +1,20 @@
-import { Component, ChangeDetectionStrategy, Input, ChangeDetectorRef, HostBinding, ViewChild } from '@angular/core';
-import { Pin, PinService } from '@app/shared';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  Input,
+  ChangeDetectorRef,
+  HostBinding,
+  ViewChild,
+  Output,
+  EventEmitter
+} from '@angular/core';
+import { Pin, PinService, BulletinBoard } from '@app/shared';
 import { Router } from '@angular/router';
 import { MatMenuTrigger } from '@angular/material/menu';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateBulletinBoardDialogComponent } from '../create-bulletin-board-dialog/create-bulletin-board-dialog.component';
 import { CreateBulletinBoardDialogData } from '../create-bulletin-board-dialog/create-bulletin-board-dialog-data';
+import { filter, take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-pin',
@@ -14,6 +24,8 @@ import { CreateBulletinBoardDialogData } from '../create-bulletin-board-dialog/c
 })
 export class PinComponent {
   @Input() pin: Pin;
+  @Input() bulletinBoards: BulletinBoard[];
+  @Output() bulletinBoardCreated = new EventEmitter<{}>();
   @ViewChild('pinMenuTriggerAfterBlacklist', { read: MatMenuTrigger, static: false })
   pinMenuTriggerAfterBlacklist: MatMenuTrigger;
   @ViewChild('pinMenuTrigger', { read: MatMenuTrigger, static: false }) pinMenuTrigger: MatMenuTrigger;
@@ -86,11 +98,21 @@ export class PinComponent {
   }
 
   openCreateBulletinBoardDialog() {
-    this.matDialog.open(CreateBulletinBoardDialogComponent, {
-      data: {
-        imageUrl: this.imageUrl
-      } as CreateBulletinBoardDialogData,
-      width: '900px'
-    });
+    this.matDialog
+      .open(CreateBulletinBoardDialogComponent, {
+        data: {
+          imageUrl: this.imageUrl,
+          bulletinBoards: this.bulletinBoards
+        } as CreateBulletinBoardDialogData,
+        width: '900px'
+      })
+      .afterClosed()
+      .pipe(
+        take(1), // unsubscribes automatically after one take
+        filter(result => result)
+      )
+      .subscribe(() => {
+        this.bulletinBoardCreated.emit();
+      });
   }
 }

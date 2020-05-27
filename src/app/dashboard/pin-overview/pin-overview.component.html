@@ -1,5 +1,5 @@
 <mat-grid-list cols="4" rowHeight="100px" gutterSize="12px">
   <mat-grid-tile *ngFor="let pin of pins" [colspan]="1" [rowspan]="pin.rowSpan">
-    <app-pin [pin]="pin.pin"></app-pin>
+    <app-pin [pin]="pin.pin" [bulletinBoards]="bulletinBoards" (bulletinBoardCreated)="bulletinBoardCreated()"></app-pin>
   </mat-grid-tile>
 </mat-grid-list>
